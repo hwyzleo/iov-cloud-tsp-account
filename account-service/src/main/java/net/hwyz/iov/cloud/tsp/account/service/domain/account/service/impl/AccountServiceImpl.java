@@ -7,6 +7,7 @@ import net.hwyz.iov.cloud.tsp.account.service.domain.account.repository.AccountR
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.service.AccountService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.account.service.domain.factory.AccountFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -24,12 +25,16 @@ public class AccountServiceImpl implements AccountService {
     final AccountFactory factory;
     final AccountRepository repository;
 
+    @Value("${biz:default-avatar}")
+    private String defaultAvatar;
+
     @Override
     public AccountDo getOrCreate(CountryRegion countryRegion, String mobile) {
         logger.info("根据手机号[{}:{}]获取或创建账号", countryRegion.code, mobile);
         return repository.getByMobile(countryRegion, mobile).orElseGet(() -> {
             AccountDo newAccountDo = factory.build(countryRegion, mobile);
             newAccountDo.init();
+            newAccountDo.modifyAvatar(defaultAvatar);
             repository.save(newAccountDo);
             return newAccountDo;
         });

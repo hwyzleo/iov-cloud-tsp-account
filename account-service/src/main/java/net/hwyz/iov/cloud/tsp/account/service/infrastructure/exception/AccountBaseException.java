@@ -15,6 +15,10 @@ public class AccountBaseException extends BaseException {
         super(ERROR_CODE, message);
     }
 
+    public AccountBaseException(int errorCode) {
+        super(errorCode);
+    }
+
     public AccountBaseException(int errorCode, String message) {
         super(errorCode, message);
     }
