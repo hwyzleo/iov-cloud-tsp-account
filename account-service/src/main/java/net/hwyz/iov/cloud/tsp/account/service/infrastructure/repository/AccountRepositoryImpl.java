@@ -46,9 +46,9 @@ public class AccountRepositoryImpl extends AbstractRepository<Long, AccountDo> i
     }
 
     @Override
-    public Optional<AccountDo> getByUid(String uid) {
-        AccountPo accountPo = cacheService.getAccount(uid).orElseGet(() -> {
-            List<AccountPo> accountPoList = accountDao.selectPoByExample(AccountPo.builder().uid(uid).build());
+    public Optional<AccountDo> getByAccountId(String accountId) {
+        AccountPo accountPo = cacheService.getAccount(accountId).orElseGet(() -> {
+            List<AccountPo> accountPoList = accountDao.selectPoByExample(AccountPo.builder().accountId(accountId).build());
             if (accountPoList.isEmpty()) {
                 return null;
             }

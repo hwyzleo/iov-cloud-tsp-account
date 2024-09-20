@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/service/token")
 public class TokenServiceController implements TokenServiceApi {
 
-    final TokenAppService tokenAppService;
+    private final TokenAppService tokenAppService;
 
     @Override
     @PostMapping(value = "/authenticateMp")

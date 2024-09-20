@@ -38,8 +38,8 @@ public class AccountPo extends BasePo {
     /**
      * 账号唯一ID
      */
-    @TableField("uid")
-    private String uid;
+    @TableField("account_id")
+    private String accountId;
 
     /**
      * 用户名

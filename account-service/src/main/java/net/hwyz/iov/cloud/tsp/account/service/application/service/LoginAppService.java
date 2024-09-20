@@ -7,6 +7,7 @@ import net.hwyz.iov.cloud.tsp.account.api.contract.response.LoginMpResponse;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.service.AccountService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
+import net.hwyz.iov.cloud.tsp.account.service.domain.client.repository.ClientRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.service.ClientService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.ClientOperation;
 import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
@@ -34,6 +35,7 @@ public class LoginAppService {
     final ClientService clientService;
     final AccountService accountService;
     final ExSecurityService securityService;
+    private final ClientRepository clientRepository;
 
     /**
      * 发送手机登录验证码
@@ -46,6 +48,7 @@ public class LoginAppService {
         checkMobile(countryRegion, mobile);
         ClientDo clientDo = clientService.getOrCreate(clientId, ClientType.MP);
         clientDo.checkOperation(ClientOperation.SEND_LOGIN_VERIFY_CODE);
+        clientRepository.save(clientDo);
         loginService.sendMobileVerifyCode(clientId, countryRegion, mobile);
     }
 
@@ -63,8 +66,8 @@ public class LoginAppService {
         boolean verifySuccess = loginService.verifyMobileVerifyCode(countryRegion, mobile, verifyCode);
         if (verifySuccess) {
             AccountDo accountDo = accountService.getOrCreate(countryRegion, mobile);
-            clientService.login(clientId, ClientType.MP, accountDo.getUid());
-            TokenDo tokenDo = tokenService.createMpToken(accountDo.getUid(), clientId);
+            clientService.login(clientId, ClientType.MP, accountDo.getAccountId());
+            TokenDo tokenDo = tokenService.createMpToken(accountDo.getAccountId(), clientId);
             return LoginMpResponse.builder()
                     .mobile(mobile)
                     .nickname(accountDo.getNickname())

@@ -19,24 +19,23 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
-    final ClientFactory factory;
-    final ClientRepository repository;
+    private final ClientFactory factory;
+    private final ClientRepository repository;
 
     @Override
     public ClientDo getOrCreate(String clientId, ClientType clientType) {
-        return repository.getLastClient(clientId).orElseGet(() -> {
+        return repository.getLastClient(clientType, clientId).orElseGet(() -> {
             ClientDo newClientDo = factory.build(clientId, clientType);
             newClientDo.init();
-            repository.save(newClientDo);
             return newClientDo;
         });
     }
 
     @Override
-    public ClientDo login(String clientId, ClientType clientType, String uid) {
-        logger.info("客户端[{}:{}]登录用户[{}]", clientType, clientId, uid);
+    public ClientDo login(String clientId, ClientType clientType, String accountId) {
+        logger.info("客户端[{}:{}]登录用户[{}]", clientType, clientId, accountId);
         ClientDo clientDo = getOrCreate(clientId, clientType);
-        clientDo.login(uid);
+        clientDo.login(accountId);
         repository.save(clientDo);
         return clientDo;
     }

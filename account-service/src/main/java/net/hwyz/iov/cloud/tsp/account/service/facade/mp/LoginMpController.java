@@ -38,8 +38,8 @@ public class LoginMpController implements LoginMpApi {
     public Response<LoginMpResponse> smsVerifyCodeLogin(@RequestHeader String clientId, @RequestBody @Valid SmsVerifyCodeLoginRequest request) {
         logger.info("手机客户端[{}]通过验证码[{}]登录手机账号[{}:{}]", clientId, request.getVerifyCode(), request.getCountryRegionCode(),
                 request.getMobile());
-        LoginMpResponse loginResponse = loginAppService.mobileVerifyCodeLogin(clientId,
-                CountryRegion.valOf(request.getCountryRegionCode()), request.getMobile(), request.getVerifyCode());
+        LoginMpResponse loginResponse = loginAppService.mobileVerifyCodeLogin(clientId, CountryRegion.valOf(request.getCountryRegionCode()),
+                request.getMobile(), request.getVerifyCode());
         return new Response<>(loginResponse);
     }
 }

@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `db_account`.`tb_account`;
 CREATE TABLE `db_account`.`tb_account`
 (
     `id`                  BIGINT      NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `uid`                 VARCHAR(50) NOT NULL COMMENT '账号唯一ID',
+    `account_id`          VARCHAR(64) NOT NULL COMMENT '账号唯一ID',
     `username`            VARCHAR(50)          DEFAULT NULL COMMENT '用户名',
     `country_region_code` VARCHAR(20)          DEFAULT NULL COMMENT '手机所属国家或地区',
     `mobile`              VARCHAR(15)          DEFAULT NULL COMMENT '手机号',
@@ -18,7 +18,7 @@ CREATE TABLE `db_account`.`tb_account`
     `row_version`         INT                  DEFAULT NULL COMMENT '记录版本',
     `row_valid`           TINYINT              DEFAULT NULL COMMENT '是否有效',
     PRIMARY KEY (`id`),
-    UNIQUE KEY (`uid`)
+    UNIQUE KEY (`account_id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT ='账号数据';
 
@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `db_account`.`tb_token`;
 CREATE TABLE `db_account`.`tb_token`
 (
     `id`                    BIGINT       NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `uid`                   VARCHAR(50)  NOT NULL COMMENT '账号唯一ID',
+    `account_id`            VARCHAR(64)  NOT NULL COMMENT '账号唯一ID',
     `client_type`           VARCHAR(20)  NOT NULL COMMENT '客户端类型',
     `client_id`             VARCHAR(50)  NOT NULL COMMENT '客户端ID',
     `vin`                   VARCHAR(20)           DEFAULT NULL COMMENT '车架号',
@@ -51,10 +51,12 @@ DROP TABLE IF EXISTS `db_account`.`tb_client`;
 CREATE TABLE `db_account`.`tb_client`
 (
     `id`          BIGINT       NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `uid`         VARCHAR(50)           DEFAULT NULL COMMENT '账号唯一ID',
+    `account_id`  VARCHAR(64)           DEFAULT NULL COMMENT '账号唯一ID',
     `client_id`   VARCHAR(255) NOT NULL COMMENT '客户端ID',
+    `push_reg_id` VARCHAR(255)          DEFAULT NULL COMMENT '推送注册ID',
     `client_type` VARCHAR(20)           DEFAULT NULL COMMENT '客户端类型',
     `oem`         VARCHAR(50)           DEFAULT NULL COMMENT '设备厂商',
+    `os`          VARCHAR(50)           DEFAULT NULL COMMENT '操作系统',
     `os_version`  VARCHAR(255)          DEFAULT NULL COMMENT '操作系统版本',
     `app_version` VARCHAR(100)          DEFAULT NULL COMMENT '应用版本',
     `ip`          VARCHAR(100)          DEFAULT NULL COMMENT 'IP地址',

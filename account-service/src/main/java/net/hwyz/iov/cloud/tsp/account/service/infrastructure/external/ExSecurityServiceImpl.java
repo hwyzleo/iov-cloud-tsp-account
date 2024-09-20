@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExSecurityServiceImpl implements ExSecurityService {
     @Override
-    public byte[] getMobileKey(String uid, String clientId) {
-        logger.info("获取用户[{}]手机[{}]密钥", uid, clientId);
+    public byte[] getMobileKey(String accountId, String clientId) {
+        logger.info("获取用户[{}]手机[{}]密钥", accountId, clientId);
         return new byte[]{0, 0, 0, 0, 0, 0, 0, 0};
     }
 }

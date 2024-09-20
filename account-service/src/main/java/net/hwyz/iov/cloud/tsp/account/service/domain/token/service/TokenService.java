@@ -16,11 +16,11 @@ public interface TokenService {
     /**
      * 创建手机端令牌
      *
-     * @param uid      用户唯一ID
-     * @param clientId 客户端ID
+     * @param accountId 用户唯一ID
+     * @param clientId  客户端ID
      * @return 令牌领域对象
      */
-    TokenDo createMpToken(String uid, String clientId);
+    TokenDo createMpToken(String accountId, String clientId);
 
     /**
      * 验证令牌

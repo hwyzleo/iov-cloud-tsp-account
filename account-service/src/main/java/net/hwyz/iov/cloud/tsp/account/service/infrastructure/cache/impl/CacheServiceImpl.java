@@ -69,8 +69,8 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public Optional<AccountPo> getAccount(String uid) {
-        String accountJson = redisTemplate.opsForValue().get(REDIS_KEY_PREFIX_ACCOUNT + uid);
+    public Optional<AccountPo> getAccount(String accountId) {
+        String accountJson = redisTemplate.opsForValue().get(REDIS_KEY_PREFIX_ACCOUNT + accountId);
         if (StrUtil.isNotBlank(accountJson)) {
             return Optional.of(JSONUtil.toBean(accountJson, AccountPo.class));
         }
@@ -79,6 +79,6 @@ public class CacheServiceImpl implements CacheService {
 
     @Override
     public void setAccount(AccountPo accountPo) {
-        redisTemplate.opsForValue().set(REDIS_KEY_PREFIX_ACCOUNT + accountPo.getUid(), JSONUtil.parse(accountPo).toJSONString(0));
+        redisTemplate.opsForValue().set(REDIS_KEY_PREFIX_ACCOUNT + accountPo.getAccountId(), JSONUtil.parse(accountPo).toJSONString(0));
     }
 }

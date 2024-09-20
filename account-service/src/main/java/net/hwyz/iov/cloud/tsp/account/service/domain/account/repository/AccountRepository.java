@@ -25,9 +25,9 @@ public interface AccountRepository extends BaseRepository<Long, AccountDo> {
     /**
      * 根据UID获取领域对象
      *
-     * @param uid 账号唯一ID
+     * @param accountId 账号唯一ID
      * @return 领域对象
      */
-    Optional<AccountDo> getByUid(String uid);
+    Optional<AccountDo> getByAccountId(String accountId);
 
 }

@@ -1,6 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception;
 
 
+import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 
 /**
@@ -8,8 +9,13 @@ import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegio
  *
  * @author hwyz_leo
  */
+@Slf4j
 public class MobileInvalidException extends AccountBaseException {
+
+    private static final int ERROR_CODE = 201002;
+
     public MobileInvalidException(String mobile, CountryRegion countryRegion) {
-        super(String.format("手机号码[%s]无效[%s]", mobile, countryRegion.name));
+        super(ERROR_CODE);
+        logger.warn("手机号码[{}]无效[{}]", mobile, countryRegion.name);
     }
 }

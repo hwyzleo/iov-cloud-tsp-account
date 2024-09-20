@@ -9,6 +9,7 @@ import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.assemble
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.dao.ClientDao;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.ClientPo;
 import net.hwyz.iov.cloud.tsp.framework.commons.domain.AbstractRepository;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -23,11 +24,28 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ClientRepositoryImpl extends AbstractRepository<Long, ClientDo> implements ClientRepository {
 
-    final ClientDao clientDao;
+    private final ClientDao clientDao;
 
     @Override
-    public Optional<ClientDo> getLastClient(String clientId) {
-        ClientPo clientPo = clientDao.selectLastPoByExample(ClientPo.builder().clientId(clientId).build());
+    public Optional<ClientDo> getLastClient(ClientType clientType, String clientId) {
+        ClientPo clientPo = clientDao.selectLastPoByExample(ClientPo.builder()
+                .clientType(clientType.name())
+                .clientId(clientId)
+                .build());
+        if (clientPo != null) {
+            ClientDo clientDo = ClientPoAssembler.INSTANCE.toDo(clientPo);
+            clientDo.stateLoad();
+            return Optional.of(clientDo);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<ClientDo> getAccountLastClient(ClientType clientType, String accountId) {
+        ClientPo clientPo = clientDao.selectLastPoByExample(ClientPo.builder()
+                .clientType(clientType.name())
+                .accountId(accountId)
+                .build());
         if (clientPo != null) {
             ClientDo clientDo = ClientPoAssembler.INSTANCE.toDo(clientPo);
             clientDo.stateLoad();

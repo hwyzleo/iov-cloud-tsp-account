@@ -25,9 +25,9 @@ public interface ClientService {
      *
      * @param clientId   客户端ID
      * @param clientType 客户端类型
-     * @param uid        账号唯一ID
+     * @param accountId  账号唯一ID
      * @return 客户端领域对象
      */
-    ClientDo login(String clientId, ClientType clientType, String uid);
+    ClientDo login(String clientId, ClientType clientType, String accountId);
 
 }

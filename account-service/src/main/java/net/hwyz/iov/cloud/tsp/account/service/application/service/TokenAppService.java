@@ -27,7 +27,7 @@ public class TokenAppService {
     public UserIdentity authenticateMp(String token, String clientId) {
         return tokenService.validateToken(token, ClientType.MP, clientId)
                 .map(tokenDo -> UserIdentity.builder()
-                        .uid(tokenDo.getUid())
+                        .accountId(tokenDo.getAccountId())
                         .build())
                 .orElse(UserIdentity.builder().build());
     }

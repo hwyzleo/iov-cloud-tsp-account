@@ -25,9 +25,9 @@ public interface AccountService {
     /**
      * 通过UID获取账号领域对象
      *
-     * @param uid 账号唯一ID
+     * @param accountId 账号唯一ID
      * @return 账号领域对象
      */
-    Optional<AccountDo> get(String uid);
+    Optional<AccountDo> get(String accountId);
 
 }

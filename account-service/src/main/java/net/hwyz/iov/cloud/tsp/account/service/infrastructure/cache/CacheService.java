@@ -51,10 +51,10 @@ public interface CacheService {
     /**
      * 获取账号数据对象
      *
-     * @param uid 账号唯一ID
+     * @param accountId 账号唯一ID
      * @return 账号数据对象
      */
-    Optional<AccountPo> getAccount(String uid);
+    Optional<AccountPo> getAccount(String accountId);
 
     /**
      * 设置账号数据对象

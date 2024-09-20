@@ -12,7 +12,7 @@
         <result column="modify_by" property="modifyBy" />
         <result column="row_version" property="rowVersion" />
         <result column="row_valid" property="rowValid" />
-        <result column="uid" property="uid" />
+        <result column="account_id" property="accountId" />
         <result column="client_id" property="clientId" />
         <result column="vin" property="vin" />
         <result column="scope" property="scope" />
@@ -26,18 +26,18 @@
 
     <!-- 通用查询结果列 -->
     <sql id="baseColumnList">
-        id, uid, client_id, vin, scope, client_type, issue_time, access_token, access_token_expires, refresh_token, refresh_token_expires,
+        id, account_id, client_id, vin, scope, client_type, issue_time, access_token, access_token_expires, refresh_token, refresh_token_expires,
         description, create_time, create_by, modify_time, modify_by, row_version, row_valid
     </sql>
 
     <!-- 插入 -->
     <insert id="insertPo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_token (
-            id, uid, client_id, vin, scope, client_type, issue_time, access_token, access_token_expires, refresh_token, refresh_token_expires,
+            id, account_id, client_id, vin, scope, client_type, issue_time, access_token, access_token_expires, refresh_token, refresh_token_expires,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES (
-            #{id}, #{uid}, #{clientId}, #{vin}, #{scope}, #{clientType}, #{issueTime}, #{accessToken}, #{accessTokenExpires}, #{refreshToken}, #{refreshTokenExpires},
+            #{id}, #{accountId}, #{clientId}, #{vin}, #{scope}, #{clientType}, #{issueTime}, #{accessToken}, #{accessTokenExpires}, #{refreshToken}, #{refreshTokenExpires},
             #{description}, now(), #{createBy}, now(), #{modifyBy}, 1, 1
         )
     </insert>
@@ -45,13 +45,13 @@
     <!-- 批量插入 -->
     <insert id="batchInsertPo" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
         INSERT INTO tb_token (
-            id, uid, client_id, vin, scope, client_type, issue_time, access_token, access_token_expires, refresh_token, refresh_token_expires,
+            id, account_id, client_id, vin, scope, client_type, issue_time, access_token, access_token_expires, refresh_token, refresh_token_expires,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
         (
-            #{item.id}, #{item.uid}, #{item.clientId}, #{item.vin}, #{item.scope}, #{item.clientType}, #{item.issueTime}, #{item.accessToken}, #{item.accessTokenExpires}, #{item.refreshToken}, #{item.refreshTokenExpires},
+            #{item.id}, #{item.accountId}, #{item.clientId}, #{item.vin}, #{item.scope}, #{item.clientType}, #{item.issueTime}, #{item.accessToken}, #{item.accessTokenExpires}, #{item.refreshToken}, #{item.refreshTokenExpires},
             #{item.description}, now(), #{item.createBy}, now(), #{item.modifyBy}, 1, 1
         )
         </foreach>
@@ -60,8 +60,8 @@
     <!-- 更新 -->
     <update id="updatePo" parameterType="net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.TokenPo">
         UPDATE tb_token t SET
-        <if test="uid != null and uid != ''">
-            t.uid = #{uid},
+        <if test="accountId != null and accountId != ''">
+            t.account_id = #{accountId},
         </if>
         <if test="clientId != null and clientId != ''">
             t.client_id = #{clientId},
@@ -132,8 +132,8 @@
         <if test="id != null">
             AND t.id = #{id}
         </if>
-        <if test="uid != null and uid != ''">
-            AND t.uid = #{uid}
+        <if test="accountId != null and accountId != ''">
+            AND t.account_id = #{accountId}
         </if>
         <if test="clientId != null and clientId != ''">
             AND t.client_id = #{clientId}

@@ -40,8 +40,8 @@ public class TokenPo extends BasePo {
     /**
      * 账号唯一ID
      */
-    @TableField("uid")
-    private String uid;
+    @TableField("account_id")
+    private String accountId;
 
     /**
      * 客户端ID

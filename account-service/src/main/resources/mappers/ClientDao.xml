@@ -12,10 +12,12 @@
         <result column="modify_by" property="modifyBy" />
         <result column="row_version" property="rowVersion" />
         <result column="row_valid" property="rowValid" />
-        <result column="uid" property="uid" />
+        <result column="account_id" property="accountId" />
         <result column="client_id" property="clientId" />
+        <result column="push_reg_id" property="pushRegId" />
         <result column="client_type" property="clientType" />
         <result column="oem" property="oem" />
+        <result column="os" property="os" />
         <result column="os_version" property="osVersion" />
         <result column="app_version" property="appVersion" />
         <result column="ip" property="ip" />
@@ -24,18 +26,18 @@
 
     <!-- 通用查询结果列 -->
     <sql id="baseColumnList">
-        id, uid, client_id, client_type, oem, os_version, app_version, ip, login_time,
+        id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, login_time,
         description, create_time, create_by, modify_time, modify_by, row_version, row_valid
     </sql>
 
     <!-- 插入 -->
     <insert id="insertPo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_client (
-            id, uid, client_id, client_type, oem, os_version, app_version, ip, login_time,
+            id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, login_time,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES (
-            #{id}, #{uid}, #{clientId}, #{clientType}, #{oem}, #{osVersion}, #{appVersion}, #{ip}, #{loginTime},
+            #{id}, #{accountId}, #{clientId}, #{pushRegId}, #{clientType}, #{oem}, #{os}, #{osVersion}, #{appVersion}, #{ip}, #{loginTime},
             #{description}, now(), #{createBy}, now(), #{modifyBy}, 1, 1
         )
     </insert>
@@ -43,13 +45,13 @@
     <!-- 批量插入 -->
     <insert id="batchInsertPo" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
         INSERT INTO tb_client (
-            id, uid, client_id, client_type, oem, os_version, app_version, ip, login_time,
+            id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, login_time,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
         (
-            #{item.id}, #{item.uid}, #{item.clientId}, #{item.clientType}, #{item.oem}, #{item.osVersion}, #{item.appVersion}, #{item.ip}, #{item.loginTime},
+            #{item.id}, #{item.accountId}, #{item.clientId}, #{item.pushRegId}, #{item.clientType}, #{item.oem}, #{item.os}, #{item.osVersion}, #{item.appVersion}, #{item.ip}, #{item.loginTime},
             #{item.description}, now(), #{item.createBy}, now(), #{item.modifyBy}, 1, 1
         )
         </foreach>
@@ -58,17 +60,23 @@
     <!-- 更新 -->
     <update id="updatePo" parameterType="net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.ClientPo">
         UPDATE tb_client t SET
-        <if test="uid != null and uid != ''">
-            t.uid = #{uid},
+        <if test="accountId != null and accountId != ''">
+            t.account_id = #{accountId},
         </if>
         <if test="clientId != null and clientId != ''">
             t.client_id = #{clientId},
+        </if>
+        <if test="pushRegId != null and pushRegId != ''">
+            t.push_reg_id = #{pushRegId},
         </if>
         <if test="clientType != null and clientType != ''">
             t.client_type = #{clientType},
         </if>
         <if test="oem != null and oem != ''">
             t.oem = #{oem},
+        </if>
+        <if test="os != null and os != ''">
+            t.os = #{os},
         </if>
         <if test="osVersion != null and osVersion != ''">
             t.os_version = #{osVersion},
@@ -124,17 +132,23 @@
         <if test="id != null">
             AND t.id = #{id}
         </if>
-        <if test="uid != null and uid != ''">
-            AND t.uid = #{uid}
+        <if test="accountId != null and accountId != ''">
+            AND t.accountId = #{accountId}
         </if>
         <if test="clientId != null and clientId != ''">
             AND t.client_id = #{clientId}
+        </if>
+        <if test="pushRegId != null and pushRegId != ''">
+            AND t.push_reg_id = #{pushRegId}
         </if>
         <if test="clientType != null and clientType != ''">
             AND t.client_type = #{clientType}
         </if>
         <if test="oem != null and oem != ''">
             AND t.oem = #{oem}
+        </if>
+        <if test="os != null and os != ''">
+            AND t.os = #{os}
         </if>
         <if test="osVersion != null and osVersion != ''">
             AND t.os_version = #{osVersion}
@@ -194,17 +208,23 @@
         <if test="id != null">
             AND t.id = #{id}
         </if>
-        <if test="uid != null and uid != ''">
-            AND t.uid = #{uid}
+        <if test="accountId != null and accountId != ''">
+            AND t.account_id = #{accountId}
         </if>
         <if test="clientId != null and clientId != ''">
             AND t.client_id = #{clientId}
+        </if>
+        <if test="pushRegId != null and pushRegId != ''">
+            AND t.push_reg_id = #{pushRegId}
         </if>
         <if test="clientType != null and clientType != ''">
             AND t.client_type = #{clientType}
         </if>
         <if test="oem != null and oem != ''">
             AND t.oem = #{oem}
+        </if>
+        <if test="os != null and os != ''">
+            AND t.os = #{os}
         </if>
         <if test="osVersion != null and osVersion != ''">
             AND t.os_version = #{osVersion}
@@ -236,7 +256,7 @@
         <if test="rowVersion != null">
             AND t.row_version = #{rowVersion}
         </if>
-        ORDER BY t.id DESC
+        ORDER BY t.login_time DESC
         LIMIT 1
     </select>
 </mapper>

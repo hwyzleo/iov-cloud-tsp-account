@@ -19,6 +19,6 @@ public class UserIdentity {
     /**
      * 账号唯一ID
      */
-    private String uid;
+    private String accountId;
 
 }

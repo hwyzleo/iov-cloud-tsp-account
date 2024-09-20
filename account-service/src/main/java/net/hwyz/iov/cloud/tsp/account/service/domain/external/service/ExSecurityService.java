@@ -10,10 +10,10 @@ public interface ExSecurityService {
     /**
      * 获取手机密钥
      *
-     * @param uid      账号唯一ID
-     * @param clientId 客户端ID
+     * @param accountId 账号唯一ID
+     * @param clientId  客户端ID
      * @return 手机密钥
      */
-    byte[] getMobileKey(String uid, String clientId);
+    byte[] getMobileKey(String accountId, String clientId);
 
 }

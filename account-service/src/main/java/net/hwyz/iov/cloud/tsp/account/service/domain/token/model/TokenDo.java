@@ -20,7 +20,7 @@ public class TokenDo extends BaseDo<Long> {
     /**
      * 账号唯一ID
      */
-    private String uid;
+    private String accountId;
     /**
      * 客户端类型
      */

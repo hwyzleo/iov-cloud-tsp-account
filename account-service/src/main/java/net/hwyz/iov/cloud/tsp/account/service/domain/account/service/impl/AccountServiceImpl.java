@@ -41,8 +41,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Optional<AccountDo> get(String uid) {
-        logger.info("根据UID[{}]获取账号", uid);
-        return repository.getByUid(uid);
+    public Optional<AccountDo> get(String accountId) {
+        logger.info("根据账号ID[{}]获取账号", accountId);
+        return repository.getByAccountId(accountId);
     }
 }

@@ -20,7 +20,7 @@ public class AccountDo extends BaseDo<Long> {
     /**
      * 账号唯一ID
      */
-    private String uid;
+    private String accountId;
     /**
      * 国家或地区代码
      */
@@ -46,7 +46,7 @@ public class AccountDo extends BaseDo<Long> {
      * 初始化
      */
     public void init() {
-        uid = IdUtil.nanoId();
+        accountId = IdUtil.nanoId();
         gender = Gender.UNKNOWN;
         nickname = "用户" + RandomUtil.randomNumbers(8);
         stateInit();

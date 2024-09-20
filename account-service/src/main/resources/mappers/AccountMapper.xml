@@ -12,7 +12,7 @@
         <result column="modify_by" property="modifyBy" />
         <result column="row_version" property="rowVersion" />
         <result column="row_valid" property="rowValid" />
-        <result column="uid" property="uid" />
+        <result column="account_id" property="accountId" />
         <result column="username" property="username" />
         <result column="country_region_code" property="countryRegionCode" />
         <result column="mobile" property="mobile" />
@@ -24,18 +24,18 @@
 
     <!-- 通用查询结果列 -->
     <sql id="baseColumnList">
-        id, uid, username, country_region_code, mobile, email, nickname, avatar, gender, 
+        id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender,
         description, create_time, create_by, modify_time, modify_by, row_version, row_valid
     </sql>
 
     <!-- 插入 -->
     <insert id="insertPo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_account (
-            id, uid, username, country_region_code, mobile, email, nickname, avatar, gender, 
+            id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES (
-            #{id}, #{uid}, #{username}, #{countryRegionCode}, #{mobile}, #{email}, #{nickname}, #{avatar}, #{gender}, 
+            #{id}, #{accountId}, #{username}, #{countryRegionCode}, #{mobile}, #{email}, #{nickname}, #{avatar}, #{gender},
             #{description}, now(), #{createBy}, now(), #{modifyBy}, 1, 1
         )
     </insert>
@@ -43,13 +43,13 @@
     <!-- 批量插入 -->
     <insert id="batchInsertPo" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
         INSERT INTO tb_account (
-            id, uid, username, country_region_code, mobile, email, nickname, avatar, gender, 
+            id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
         (
-            #{item.id}, #{item.uid}, #{item.username}, #{item.countryRegionCode}, #{item.mobile}, #{item.email}, #{item.nickname}, #{item.avatar}, #{item.gender}, 
+            #{item.id}, #{item.accountId}, #{item.username}, #{item.countryRegionCode}, #{item.mobile}, #{item.email}, #{item.nickname}, #{item.avatar}, #{item.gender},
             #{item.description}, now(), #{item.createBy}, now(), #{item.modifyBy}, 1, 1
         )
         </foreach>
@@ -58,8 +58,8 @@
     <!-- 更新 -->
     <update id="updatePo" parameterType="net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.AccountPo">
         UPDATE tb_account t SET
-        <if test="uid != null and uid != ''">
-            t.uid = #{uid},
+        <if test="accountId != null and accountId != ''">
+            t.account_id = #{accountId},
         </if>
         <if test="username != null and username != ''">
             t.username = #{username},
@@ -124,8 +124,8 @@
         <if test="id != null">
             AND t.id = #{id}
         </if>
-        <if test="uid != null and uid != ''">
-            AND t.uid = #{uid}
+        <if test="accountId != null and accountId != ''">
+            AND t.account_id = #{accountId}
         </if>
         <if test="username != null and username != ''">
             AND t.username = #{username}

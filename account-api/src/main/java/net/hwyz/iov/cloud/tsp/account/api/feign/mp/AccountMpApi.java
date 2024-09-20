@@ -1,6 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.api.feign.mp;
 
 import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfoMp;
+import net.hwyz.iov.cloud.tsp.framework.commons.bean.ClientAccount;
 import net.hwyz.iov.cloud.tsp.framework.commons.bean.Response;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
 
@@ -14,49 +15,44 @@ public interface AccountMpApi {
     /**
      * 获取账号信息
      *
-     * @param clientId 客户端ID
-     * @param uid      账号唯一ID
+     * @param clientAccount 终端用户
      * @return 手机账户信息
      */
-    Response<AccountInfoMp> getAccountInfo(String clientId, String uid);
+    Response<AccountInfoMp> getAccountInfo(ClientAccount clientAccount);
 
     /**
      * 生成头像上传地址
      *
-     * @param clientId 客户端ID
-     * @param uid      账号唯一ID
+     * @param clientAccount 终端用户
      * @return 头像上传地址
      */
-    Response<PreSignedUrl> generateAvatarUrl(String clientId, String uid);
+    Response<PreSignedUrl> generateAvatarUrl(ClientAccount clientAccount);
 
     /**
      * 修改头像
      *
-     * @param clientId 客户端ID
-     * @param uid      账号唯一ID
-     * @param avatar   头像
+     * @param clientAccount 终端用户
+     * @param avatar        头像
      * @return 操作结果
      */
-    Response<Void> modifyAvatar(String clientId, String uid, String avatar);
+    Response<Void> modifyAvatar(ClientAccount clientAccount, String avatar);
 
     /**
      * 修改昵称
      *
-     * @param clientId 客户端ID
-     * @param uid      账号唯一ID
-     * @param nickname 昵称
+     * @param clientAccount 终端用户
+     * @param nickname      昵称
      * @return 操作结果
      */
-    Response<Void> modifyNickname(String clientId, String uid, String nickname);
+    Response<Void> modifyNickname(ClientAccount clientAccount, String nickname);
 
     /**
      * 修改性别
      *
-     * @param clientId 客户端ID
-     * @param uid      账号唯一ID
-     * @param gender   性别
+     * @param clientAccount 终端用户
+     * @param gender        性别
      * @return 操作结果
      */
-    Response<Void> modifyGender(String clientId, String uid, String gender);
+    Response<Void> modifyGender(ClientAccount clientAccount, String gender);
 
 }

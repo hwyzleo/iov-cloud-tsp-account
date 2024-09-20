@@ -40,14 +40,20 @@ public class ClientPo extends BasePo {
     /**
      * 账号唯一ID
      */
-    @TableField("uid")
-    private String uid;
+    @TableField("account_id")
+    private String accountId;
 
     /**
      * 客户端ID
      */
     @TableField("client_id")
     private String clientId;
+
+    /**
+     * 推送注册ID
+     */
+    @TableField("push_reg_id")
+    private String pushRegId;
 
     /**
      * 客户端类型
@@ -60,6 +66,12 @@ public class ClientPo extends BasePo {
      */
     @TableField("oem")
     private String oem;
+
+    /**
+     * 操作系统
+     */
+    @TableField("os")
+    private String os;
 
     /**
      * 操作系统版本
