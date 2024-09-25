@@ -2,7 +2,7 @@ package net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception;
 
 
 import lombok.extern.slf4j.Slf4j;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 
 /**
  * 手机登录验证码不正确异常

@@ -2,7 +2,7 @@ package net.hwyz.iov.cloud.tsp.account.service.domain.account.service;
 
 
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 
 import java.util.Optional;
 

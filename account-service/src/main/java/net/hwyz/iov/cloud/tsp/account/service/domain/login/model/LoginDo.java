@@ -2,8 +2,8 @@ package net.hwyz.iov.cloud.tsp.account.service.domain.login.model;
 
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseDo;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;

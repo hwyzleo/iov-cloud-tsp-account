@@ -3,13 +3,13 @@ package net.hwyz.iov.cloud.tsp.account.service.domain.login.service.impl;
 import cn.hutool.core.collection.ListUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.account.service.domain.external.service.ExMnoService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.factory.LoginFactory;
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.model.LoginDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.repository.LoginRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.service.LoginService;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.MobileLoginSendLockException;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

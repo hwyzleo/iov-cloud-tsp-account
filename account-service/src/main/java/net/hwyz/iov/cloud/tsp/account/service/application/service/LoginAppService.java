@@ -10,7 +10,6 @@ import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.repository.ClientRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.service.ClientService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.ClientOperation;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.account.service.domain.external.service.ExSecurityService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.service.LoginService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.token.model.TokenDo;
@@ -18,6 +17,7 @@ import net.hwyz.iov.cloud.tsp.account.service.domain.token.service.TokenService;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.MobileInvalidException;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.MobileLoginVerifyCodeIncorrectException;
 import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import org.springframework.stereotype.Service;
 
 /**

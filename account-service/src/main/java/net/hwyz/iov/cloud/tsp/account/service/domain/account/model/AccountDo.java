@@ -4,8 +4,8 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseDo;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.framework.commons.enums.Gender;
 
 /**

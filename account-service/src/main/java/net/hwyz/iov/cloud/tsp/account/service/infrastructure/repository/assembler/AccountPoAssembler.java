@@ -24,7 +24,8 @@ public interface AccountPoAssembler {
      * @return 领域对象
      */
     @Mappings({
-            @Mapping(target = "gender", expression = "java(net.hwyz.iov.cloud.tsp.framework.commons.enums.Gender.valueOf(accountPo.getGender()))")
+            @Mapping(target = "gender", expression = "java(net.hwyz.iov.cloud.tsp.framework.commons.enums.Gender.valueOf(accountPo.getGender()))"),
+            @Mapping(target = "countryRegion", expression = "java(net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion.valOf(accountPo.getCountryRegionCode()))")
     })
     AccountDo toDo(AccountPo accountPo);
 

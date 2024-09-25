@@ -1,11 +1,11 @@
 package net.hwyz.iov.cloud.tsp.account.service.infrastructure.cache;
 
 
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.AccountPo;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.LoginPo;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.TokenPo;
 import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 
 import java.util.Optional;
 

@@ -8,8 +8,8 @@ import net.hwyz.iov.cloud.tsp.account.api.contract.request.SmsVerifyCodeLoginReq
 import net.hwyz.iov.cloud.tsp.account.api.contract.response.LoginMpResponse;
 import net.hwyz.iov.cloud.tsp.account.api.feign.mp.LoginMpApi;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.LoginAppService;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.framework.commons.bean.Response;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import org.springframework.web.bind.annotation.*;
 
 /**

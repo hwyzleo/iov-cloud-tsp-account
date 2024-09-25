@@ -35,7 +35,7 @@ public interface LoginPoAssembler {
      * @return 领域对象
      */
     @Mappings({
-            @Mapping(target = "countryRegion", expression = "java(net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion.valOf(loginPo.getCountryRegionCode()))")
+            @Mapping(target = "countryRegion", expression = "java(net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion.valOf(loginPo.getCountryRegionCode()))")
     })
     LoginDo toDo(LoginPo loginPo);
 

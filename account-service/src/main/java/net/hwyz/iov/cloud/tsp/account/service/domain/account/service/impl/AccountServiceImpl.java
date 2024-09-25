@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.repository.AccountRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.service.AccountService;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.account.service.domain.factory.AccountFactory;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

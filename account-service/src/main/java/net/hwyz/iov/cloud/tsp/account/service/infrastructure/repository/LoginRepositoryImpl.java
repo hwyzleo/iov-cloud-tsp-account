@@ -3,12 +3,12 @@ package net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository;
 import cn.hutool.json.JSONUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.model.LoginDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.repository.LoginRepository;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.cache.CacheService;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.assembler.LoginPoAssembler;
 import net.hwyz.iov.cloud.tsp.framework.commons.domain.AbstractRepository;
+import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

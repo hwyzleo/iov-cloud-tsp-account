@@ -2,7 +2,6 @@ package net.hwyz.iov.cloud.tsp.account.api.contract;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -15,20 +14,15 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class AccountInfoMp extends AccountInfo {
+public class AccountInfo {
 
     /**
-     * 昵称
+     * 国家与地区代码
      */
-    private String nickname;
+    private String countryRegionCode;
     /**
-     * 头像
+     * 手机号
      */
-    private String avatar;
-    /**
-     * 性别
-     */
-    private String gender;
+    private String mobile;
 
 }

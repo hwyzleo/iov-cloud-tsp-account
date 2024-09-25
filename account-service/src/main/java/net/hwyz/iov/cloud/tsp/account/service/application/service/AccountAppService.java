@@ -1,11 +1,13 @@
 package net.hwyz.iov.cloud.tsp.account.service.application.service;
 
 import lombok.RequiredArgsConstructor;
+import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfo;
 import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfoMp;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.repository.AccountRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.service.AccountService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.external.service.ExObjectService;
+import net.hwyz.iov.cloud.tsp.account.service.facade.assembler.AccountInfoAssembler;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.AccountNotExistException;
 import net.hwyz.iov.cloud.tsp.framework.commons.enums.Gender;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
@@ -35,16 +37,27 @@ public class AccountAppService {
     /**
      * 获取手机端账号信息
      *
-     * @param uid 账号唯一ID
+     * @param accountId 账号唯一ID
      * @return 手机端账号信息
      */
-    public AccountInfoMp getMpAccountInfo(String uid) {
-        return accountService.get(uid).map(accountDo -> AccountInfoMp.builder()
+    public AccountInfoMp getMpAccountInfo(String accountId) {
+        return accountService.get(accountId).map(accountDo -> AccountInfoMp.builder()
                 .mobile(accountDo.getMobile())
                 .avatar(accountDo.getAvatar())
                 .nickname(accountDo.getNickname())
                 .gender(accountDo.getGender().name())
                 .build()).orElse(null);
+    }
+
+    /**
+     * 获取账号信息
+     * @param accountId 账号ID
+     * @return 账号信息
+     */
+    public AccountInfo getAccountInfo(String accountId) {
+        return accountService.get(accountId).map(accountDo -> {
+            return AccountInfoAssembler.INSTANCE.fromDo(accountDo);
+        }).orElse(null);
     }
 
     /**
