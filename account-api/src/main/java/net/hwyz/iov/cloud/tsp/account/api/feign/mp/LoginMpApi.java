@@ -3,6 +3,7 @@ package net.hwyz.iov.cloud.tsp.account.api.feign.mp;
 
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.SendSmsLoginVerifyCodeRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.SmsVerifyCodeLoginRequest;
+import net.hwyz.iov.cloud.tsp.account.api.contract.request.WxMobileCodeLoginRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.response.LoginMpResponse;
 import net.hwyz.iov.cloud.tsp.framework.commons.bean.Response;
 
@@ -30,5 +31,14 @@ public interface LoginMpApi {
      * @return 手机登录结果
      */
     Response<LoginMpResponse> smsVerifyCodeLogin(String clientId, SmsVerifyCodeLoginRequest request);
+
+    /**
+     * 微信手机授权码登录
+     *
+     * @param clientId 客户端ID
+     * @param request  微信手机码登录请求
+     * @return 微信手机码登录结果
+     */
+    Response<LoginMpResponse> weixinMobileCodeLogin(String clientId, WxMobileCodeLoginRequest request);
 
 }

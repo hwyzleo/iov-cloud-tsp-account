@@ -4,6 +4,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
+import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.RegSource;
 import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseDo;
 import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.framework.commons.enums.Gender;
@@ -41,6 +42,10 @@ public class AccountDo extends BaseDo<Long> {
      * 性别
      */
     private Gender gender;
+    /**
+     * 注册来源
+     */
+    private RegSource regSource;
 
     /**
      * 初始化
@@ -50,6 +55,15 @@ public class AccountDo extends BaseDo<Long> {
         gender = Gender.UNKNOWN;
         nickname = "用户" + RandomUtil.randomNumbers(8);
         stateInit();
+    }
+
+    /**
+     * 标记注册来源
+     *
+     * @param regSource 注册来源
+     */
+    public void markRegSource(RegSource regSource) {
+        this.regSource = regSource;
     }
 
     public void modifyAvatar(String avatar) {

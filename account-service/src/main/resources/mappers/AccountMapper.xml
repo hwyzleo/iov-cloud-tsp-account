@@ -20,22 +20,23 @@
         <result column="nickname" property="nickname" />
         <result column="avatar" property="avatar" />
         <result column="gender" property="gender" />
+        <result column="reg_source" property="regSource" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="baseColumnList">
-        id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender,
+        id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender, reg_source,
         description, create_time, create_by, modify_time, modify_by, row_version, row_valid
     </sql>
 
     <!-- 插入 -->
     <insert id="insertPo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_account (
-            id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender,
+            id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender, reg_source,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES (
-            #{id}, #{accountId}, #{username}, #{countryRegionCode}, #{mobile}, #{email}, #{nickname}, #{avatar}, #{gender},
+            #{id}, #{accountId}, #{username}, #{countryRegionCode}, #{mobile}, #{email}, #{nickname}, #{avatar}, #{gender}, #{regSource},
             #{description}, now(), #{createBy}, now(), #{modifyBy}, 1, 1
         )
     </insert>
@@ -43,13 +44,13 @@
     <!-- 批量插入 -->
     <insert id="batchInsertPo" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
         INSERT INTO tb_account (
-            id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender,
+            id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender, reg_source,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
         (
-            #{item.id}, #{item.accountId}, #{item.username}, #{item.countryRegionCode}, #{item.mobile}, #{item.email}, #{item.nickname}, #{item.avatar}, #{item.gender},
+            #{item.id}, #{item.accountId}, #{item.username}, #{item.countryRegionCode}, #{item.mobile}, #{item.email}, #{item.nickname}, #{item.avatar}, #{item.gender}, #{item.regSource},
             #{item.description}, now(), #{item.createBy}, now(), #{item.modifyBy}, 1, 1
         )
         </foreach>
@@ -81,6 +82,9 @@
         </if>
         <if test="gender != null and gender != ''">
             t.gender = #{gender},
+        </if>
+        <if test="regSource != null and regSource != ''">
+            t.reg_source = #{regSource},
         </if>
         <if test="description != null and description != ''">
             t.description = #{description},
@@ -147,6 +151,9 @@
         </if>
         <if test="gender != null and gender != ''">
             AND t.gender = #{gender}
+        </if>
+        <if test="regSource != null and regSource != ''">
+            AND t.reg_source = #{regSource}
         </if>
         <if test="description != null and description != ''">
             AND t.description = #{description}

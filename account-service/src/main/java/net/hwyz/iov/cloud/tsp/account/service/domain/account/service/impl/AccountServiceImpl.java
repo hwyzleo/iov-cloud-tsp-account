@@ -22,10 +22,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
-    final AccountFactory factory;
-    final AccountRepository repository;
+    private final AccountFactory factory;
+    private final AccountRepository repository;
 
-    @Value("${biz:default-avatar}")
+    @Value("${biz.default-avatar}")
     private String defaultAvatar;
 
     @Override
@@ -35,7 +35,6 @@ public class AccountServiceImpl implements AccountService {
             AccountDo newAccountDo = factory.build(countryRegion, mobile);
             newAccountDo.init();
             newAccountDo.modifyAvatar(defaultAvatar);
-            repository.save(newAccountDo);
             return newAccountDo;
         });
     }

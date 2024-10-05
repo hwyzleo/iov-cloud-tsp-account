@@ -26,8 +26,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountRepositoryImpl extends AbstractRepository<Long, AccountDo> implements AccountRepository {
 
-    final AccountDao accountDao;
-    final CacheService cacheService;
+    private final AccountDao accountDao;
+    private final CacheService cacheService;
 
     @Override
     public Optional<AccountDo> getByMobile(CountryRegion countryRegion, String mobile) {

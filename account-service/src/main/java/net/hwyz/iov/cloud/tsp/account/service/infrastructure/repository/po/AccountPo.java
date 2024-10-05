@@ -82,4 +82,10 @@ public class AccountPo extends BasePo {
      */
     @TableField("gender")
     private String gender;
+
+    /**
+     * 注册来源
+     */
+    @TableField("reg_source")
+    private String regSource;
 }

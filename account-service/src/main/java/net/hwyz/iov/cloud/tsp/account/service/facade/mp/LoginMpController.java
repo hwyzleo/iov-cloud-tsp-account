@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.SendSmsLoginVerifyCodeRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.SmsVerifyCodeLoginRequest;
+import net.hwyz.iov.cloud.tsp.account.api.contract.request.WxMobileCodeLoginRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.response.LoginMpResponse;
 import net.hwyz.iov.cloud.tsp.account.api.feign.mp.LoginMpApi;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.LoginAppService;
@@ -41,5 +42,12 @@ public class LoginMpController implements LoginMpApi {
         LoginMpResponse loginResponse = loginAppService.mobileVerifyCodeLogin(clientId, CountryRegion.valOf(request.getCountryRegionCode()),
                 request.getMobile(), request.getVerifyCode());
         return new Response<>(loginResponse);
+    }
+
+    @Override
+    @PostMapping(value = "/action/weixinMobileCodeLogin")
+    public Response<LoginMpResponse> weixinMobileCodeLogin(@RequestHeader String clientId, @RequestBody @Valid WxMobileCodeLoginRequest request) {
+        logger.info("手机客户端[{}]通过微信小程序手机授权码[{}]登录", clientId, request.getMobileCode());
+        return new Response<>(loginAppService.weixinMiniProgramLogin(clientId, request.getMobileCode()));
     }
 }

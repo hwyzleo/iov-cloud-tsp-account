@@ -10,6 +10,7 @@ CREATE TABLE `db_account`.`tb_account`
     `nickname`            VARCHAR(50)          DEFAULT NULL COMMENT '昵称',
     `avatar`              VARCHAR(255)         DEFAULT NULL COMMENT '头像',
     `gender`              VARCHAR(50)          DEFAULT NULL COMMENT '性别',
+    `reg_source`          VARCHAR(50) NOT NULL COMMENT '注册来源',
     `description`         VARCHAR(255)         DEFAULT NULL COMMENT '备注',
     `create_time`         TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `create_by`           BIGINT               DEFAULT NULL COMMENT '创建者',
