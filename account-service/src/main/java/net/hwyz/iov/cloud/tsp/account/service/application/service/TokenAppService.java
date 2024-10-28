@@ -29,7 +29,7 @@ public class TokenAppService {
                 .map(tokenDo -> UserIdentity.builder()
                         .accountId(tokenDo.getAccountId())
                         .build())
-                .orElse(UserIdentity.builder().build());
+                .orElseThrow(null);
     }
 
 }
