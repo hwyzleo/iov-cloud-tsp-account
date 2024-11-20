@@ -37,7 +37,7 @@ pipeline {
         }
         stage('运行镜像') {
             steps {
-                sh "docker stop ${PROJECT_NAME}"
+                sh "if [ -n "$(docker ps -aq -f name=${PROJECT_NAME)" ]; then docker stop ${PROJECT_NAME} fi"
                 sh "docker rm ${PROJECT_NAME}"
                 sh "docker pull ${IMAGE_NAME}"
                 sh "docker run -d --name ${PROJECT_NAME} ${IMAGE_NAME}"
