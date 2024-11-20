@@ -81,34 +81,35 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok-maven-plugin</artifactId>
-                <version>1.18.20.0</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>delombok</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <parameters>true</parameters>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                        <arg>-XDignore.symbol.file</arg>
+                    </compilerArgs>
                     <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>${lombok-mapstruct-binding.version}</version>
+                        </path>
                     </annotationProcessorPaths>
-                    <compilerArgs>
-                        <arg>-Xlint:processing</arg>
-                        <arg>-J-Dlombok.config.file=${project.basedir}/lombok.config</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
