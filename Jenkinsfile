@@ -26,9 +26,7 @@ pipeline {
         stage('构建镜像') {
             steps {
                 script {
-                    dir('account-service') {
-                        sh "docker build -t ${IMAGE_NAME} -f ../../DockerfileService ."
-                    }
+                    sh "docker build -t ${IMAGE_NAME} -f ../DockerfileService ./account-service/"
                 }
             }
         }
