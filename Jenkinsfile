@@ -8,6 +8,10 @@ pipeline {
         IMAGE_NAME = "${env.REGISTRY_URL}/${PROJECT_NAME}:${env.BUILD_NUMBER}"
     }
 
+    tools {
+        maven 'M3'
+    }
+
     stages {
         stage('构建并发布') {
             steps {
