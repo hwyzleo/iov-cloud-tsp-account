@@ -18,8 +18,12 @@ pipeline {
         stage('构建并发布') {
             steps {
                 script {
-                    sh "echo '构建并发布'"
-                    sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
+                    sh '''
+                        echo '=============================='
+                        echo '构建并发布'
+                        echo '=============================='
+                        mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}
+                    '''
                     dir(DIR_API) {
                         sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
                     }
@@ -29,32 +33,42 @@ pipeline {
         stage('构建镜像') {
             steps {
                 script {
-                    sh "echo '构建镜像'"
-                    sh "docker build -t ${IMAGE_NAME} -f ../Dockerfile ./${DIR_SERVICE}/"
+                    sh '''
+                        echo '=============================='
+                        echo '构建镜像'
+                        echo '=============================='
+                        docker build -t ${IMAGE_NAME} -f ../Dockerfile ./${DIR_SERVICE}/
+                    '''
                 }
             }
         }
         stage('上传镜像') {
             steps {
-                sh "echo '上传镜像'"
-                sh "docker push ${IMAGE_NAME}"
+                sh '''
+                    echo '=============================='
+                    echo '上传镜像'
+                    echo '=============================='
+                    docker push ${IMAGE_NAME}
+                '''
             }
         }
         stage('运行镜像') {
             steps {
-                sh "echo '运行镜像'"
                 sh '''
+                    echo '=============================='
+                    echo '运行镜像'
+                    echo '=============================='
                     if [ -n \"\$(docker ps -q -f name=${PROJECT_NAME})" ]; then
                         docker stop ${PROJECT_NAME}
                     fi
                     if [ -n \"\$(docker ps -aq -f name=${PROJECT_NAME})" ]; then
                         docker rm ${PROJECT_NAME}
                     fi
+                    docker pull ${IMAGE_NAME}
+                    docker run -d --name ${PROJECT_NAME} ${IMAGE_NAME}
+                    sleep 10
+                    docker logs ${PROJECT_NAME}
                 '''
-                sh "docker pull ${IMAGE_NAME}"
-                sh "docker run -d --name ${PROJECT_NAME} ${IMAGE_NAME}"
-                sh "sleep 10"
-                sh "docker logs ${PROJECT_NAME}"
             }
         }
     }
