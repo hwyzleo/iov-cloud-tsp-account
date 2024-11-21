@@ -17,11 +17,8 @@ pipeline {
             steps {
                 script {
                     sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
-                    def apiDirs = findFiles(glob: '*-api').collect { it.path }
-                    apiDirs.each { dirPath ->
-                        dir(dirPath) {
-                            sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
-                        }
+                    dir(${env.DIR_API}) {
+                        sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
                     }
                 }
             }
@@ -29,7 +26,7 @@ pipeline {
         stage('构建镜像') {
             steps {
                 script {
-                    sh "docker build -t ${IMAGE_NAME} -f ../Dockerfile ./*-service/"
+                    sh "docker build -t ${IMAGE_NAME} -f ../Dockerfile ./${env.DIR_SERVICE}/"
                 }
             }
         }
