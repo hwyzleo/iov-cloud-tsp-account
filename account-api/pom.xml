@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>net.hwyz.iov.cloud.tsp</groupId>
-        <artifactId>account</artifactId>
+        <artifactId>cloud-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
