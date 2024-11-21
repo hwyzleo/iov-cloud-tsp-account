@@ -38,11 +38,13 @@ pipeline {
         stage('运行镜像') {
             steps {
                 sh '''
-                    if [ -n \"\$(docker ps -aq -f name=${PROJECT_NAME})" ]; then
+                    if [ -n \"\$(docker ps -f name=${PROJECT_NAME})" ]; then
                         docker stop ${PROJECT_NAME}
                     fi
+                    if [ -n \"\$(docker ps -aq -f name=${PROJECT_NAME})" ]; then
+                        docker rm ${PROJECT_NAME}
+                    fi
                 '''
-                sh "docker rm ${PROJECT_NAME}"
                 sh "docker pull ${IMAGE_NAME}"
                 sh "docker run -d --name ${PROJECT_NAME} ${IMAGE_NAME}"
                 sh "sleep 10"
