@@ -18,7 +18,7 @@ pipeline {
         stage('构建并发布') {
             steps {
                 script {
-                    sh "echo '1:${DIR_API},2:${DIR_SERVICE}'"
+                    sh "echo '构建并发布'"
                     sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
                     dir(DIR_API) {
                         sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
@@ -29,17 +29,20 @@ pipeline {
         stage('构建镜像') {
             steps {
                 script {
+                    sh "echo '构建镜像'"
                     sh "docker build -t ${IMAGE_NAME} -f ../Dockerfile ./${DIR_SERVICE}/"
                 }
             }
         }
         stage('上传镜像') {
             steps {
+                sh "echo '上传镜像'"
                 sh "docker push ${IMAGE_NAME}"
             }
         }
         stage('运行镜像') {
             steps {
+                sh "echo '运行镜像'"
                 sh '''
                     if [ -n \"\$(docker ps -q -f name=${PROJECT_NAME})" ]; then
                         docker stop ${PROJECT_NAME}
