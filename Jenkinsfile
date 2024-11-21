@@ -20,7 +20,7 @@ pipeline {
                 script {
                     sh "echo '1:${DIR_API},2:${DIR_SERVICE}'"
                     sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
-                    dir('${DIR_API}') {
+                    dir(DIR_API) {
                         sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
                     }
                 }
