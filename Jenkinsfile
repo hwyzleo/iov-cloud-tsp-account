@@ -38,7 +38,7 @@ pipeline {
         stage('运行镜像') {
             steps {
                 sh '''
-                    if [ -n \"\$(docker ps -f name=${PROJECT_NAME})" ]; then
+                    if [ -n \"\$(docker ps -q -f name=${PROJECT_NAME})" ]; then
                         docker stop ${PROJECT_NAME}
                     fi
                     if [ -n \"\$(docker ps -aq -f name=${PROJECT_NAME})" ]; then
