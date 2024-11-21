@@ -5,9 +5,8 @@ pipeline {
         REPO_URL = "http://${env.MAVEN_URL}/repository/maven-snapshots/"
         REPO_ID = "snapshots"
         PROJECT_NAME = "${env.JOB_NAME}"
-        NAME1 = "${env.DIR_API}"
-        NAME2 = "${params.DIR_API}"
-        NAME3 = "${DIR_API}"
+        DIR_API = "${env.DIR_KEY}-api"
+        DIR_SERVICE = "${env.DIR_KEY}-service"
         IMAGE_NAME = "${env.REGISTRY_URL}/${PROJECT_NAME}:${env.BUILD_NUMBER}"
     }
 
@@ -19,9 +18,9 @@ pipeline {
         stage('构建并发布') {
             steps {
                 script {
-                    sh "echo '1:${NAME1},2:${NAME2},3${NAME3}'"
+                    sh "echo '1:${DIR_API},2:${DIR_SERVICE}'"
                     sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
-                    dir('${env.DIR_API}') {
+                    dir('${DIR_API}') {
                         sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
                     }
                 }
@@ -30,7 +29,7 @@ pipeline {
         stage('构建镜像') {
             steps {
                 script {
-                    sh "docker build -t ${IMAGE_NAME} -f ../Dockerfile ./${env.DIR_SERVICE}/"
+                    sh "docker build -t ${IMAGE_NAME} -f ../Dockerfile ./${DIR_SERVICE}/"
                 }
             }
         }
