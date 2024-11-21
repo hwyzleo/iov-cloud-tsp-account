@@ -10,6 +10,7 @@
         <module>account-service</module>
     </modules>
 
+    <groupId>net.hwyz.iov.cloud.tsp</groupId>
     <artifactId>account</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>账号业务</description>
