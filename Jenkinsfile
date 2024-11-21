@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
-                    dir(${env.DIR_API}) {
+                    dir('${env.DIR_API}') {
                         sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
                     }
                 }
