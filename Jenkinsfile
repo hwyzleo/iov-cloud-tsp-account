@@ -19,9 +19,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        echo '=============================='
-                        echo '构建并发布'
-                        echo '=============================='
+                        echo '============================== 构建并发布 =============================='
                         mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}
                     '''
                     dir(DIR_API) {
@@ -34,9 +32,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        echo '=============================='
-                        echo '构建镜像'
-                        echo '=============================='
+                        echo '============================== 构建镜像 =============================='
                         docker build -t ${IMAGE_NAME} -f ../Dockerfile ./${DIR_SERVICE}/
                     '''
                 }
@@ -45,9 +41,7 @@ pipeline {
         stage('上传镜像') {
             steps {
                 sh '''
-                    echo '=============================='
-                    echo '上传镜像'
-                    echo '=============================='
+                    echo '============================== 上传镜像 =============================='
                     docker push ${IMAGE_NAME}
                 '''
             }
@@ -55,9 +49,7 @@ pipeline {
         stage('运行镜像') {
             steps {
                 sh '''
-                    echo '=============================='
-                    echo '运行镜像'
-                    echo '=============================='
+                    echo '============================== 运行镜像 =============================='
                     if [ -n \"\$(docker ps -q -f name=${PROJECT_NAME})" ]; then
                         docker stop ${PROJECT_NAME}
                     fi
