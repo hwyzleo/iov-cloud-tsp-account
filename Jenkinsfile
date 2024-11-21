@@ -5,6 +5,9 @@ pipeline {
         REPO_URL = "http://${env.MAVEN_URL}/repository/maven-snapshots/"
         REPO_ID = "snapshots"
         PROJECT_NAME = "${env.JOB_NAME}"
+        NAME1 = "${env.DIR_API}"
+        NAME2 = "${params.DIR_API}"
+        NAME3 = "${DIR_API}"
         IMAGE_NAME = "${env.REGISTRY_URL}/${PROJECT_NAME}:${env.BUILD_NUMBER}"
     }
 
@@ -16,6 +19,7 @@ pipeline {
         stage('构建并发布') {
             steps {
                 script {
+                    sh "echo '1:${NAME1},2:${NAME2},3${NAME3}'"
                     sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
                     dir('${env.DIR_API}') {
                         sh "mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}"
