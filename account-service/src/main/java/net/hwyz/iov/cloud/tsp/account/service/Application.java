@@ -19,6 +19,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class Application {
 
     public static void main(String[] args) {
+        // nacos issue，增加下面避免nacos日志警告
         System.setProperty("nacos.logging.default.config.enabled", "false");
         SpringApplication.run(Application.class, args);
         logger.info("应用启动完成");
