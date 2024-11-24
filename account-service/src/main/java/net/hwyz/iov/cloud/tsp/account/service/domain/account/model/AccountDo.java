@@ -46,6 +46,10 @@ public class AccountDo extends BaseDo<Long> {
      * 注册来源
      */
     private RegSource regSource;
+    /**
+     * 是否启用
+     */
+    private Boolean enable;
 
     /**
      * 初始化
@@ -54,6 +58,7 @@ public class AccountDo extends BaseDo<Long> {
         accountId = IdUtil.nanoId();
         gender = Gender.UNKNOWN;
         nickname = "用户" + RandomUtil.randomNumbers(8);
+        enable = true;
         stateInit();
     }
 

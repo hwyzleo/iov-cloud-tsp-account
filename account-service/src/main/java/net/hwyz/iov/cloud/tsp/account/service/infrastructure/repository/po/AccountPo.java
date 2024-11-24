@@ -88,4 +88,10 @@ public class AccountPo extends BasePo {
      */
     @TableField("reg_source")
     private String regSource;
+
+    /**
+     * 是否启用
+     */
+    @TableField("enable")
+    private Boolean enable;
 }

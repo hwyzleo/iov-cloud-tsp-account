@@ -17,6 +17,7 @@ import net.hwyz.iov.cloud.tsp.account.service.domain.external.service.ExWeixinMi
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.service.LoginService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.token.model.TokenDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.token.service.TokenService;
+import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.AccountNotEnableException;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.MobileInvalidException;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.MobileLoginVerifyCodeIncorrectException;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.WeixinMiniProgramException;
@@ -72,6 +73,9 @@ public class LoginAppService {
         boolean verifySuccess = loginService.verifyMobileVerifyCode(countryRegion, mobile, verifyCode);
         if (verifySuccess) {
             AccountDo accountDo = accountService.getOrCreate(countryRegion, mobile);
+            if (!accountDo.getEnable()) {
+                throw new AccountNotEnableException(accountDo.getAccountId());
+            }
             if (accountDo.getState() == DoState.NEW) {
                 accountDo.markRegSource(RegSource.APP);
             }
