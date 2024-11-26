@@ -1,13 +1,13 @@
 package net.hwyz.iov.cloud.tsp.account.service.application.service;
 
 import lombok.RequiredArgsConstructor;
+import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.UpdateClientConfigRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.response.ClientResponse;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.repository.ClientRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.service.ClientService;
 import net.hwyz.iov.cloud.tsp.account.service.facade.assembler.ClientResponseAssembler;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
 import org.springframework.stereotype.Service;
 
 /**

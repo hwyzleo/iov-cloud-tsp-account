@@ -4,10 +4,10 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.RandomUtil;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
+import net.hwyz.iov.cloud.framework.common.domain.BaseDo;
+import net.hwyz.iov.cloud.framework.common.enums.CountryRegion;
+import net.hwyz.iov.cloud.framework.common.enums.Gender;
 import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.RegSource;
-import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.Gender;
 
 /**
  * 账号领域对象

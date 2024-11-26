@@ -1,7 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.api.contract.response;
 
 import lombok.*;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.Os;
+import net.hwyz.iov.cloud.framework.common.enums.Os;
 
 /**
  * 客户端返回

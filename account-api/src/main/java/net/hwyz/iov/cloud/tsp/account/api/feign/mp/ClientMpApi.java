@@ -1,7 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.api.feign.mp;
 
+import net.hwyz.iov.cloud.framework.common.bean.Response;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.UpdateClientConfigRequest;
-import net.hwyz.iov.cloud.tsp.framework.commons.bean.Response;
 
 /**
  * 客户端相关手机接口

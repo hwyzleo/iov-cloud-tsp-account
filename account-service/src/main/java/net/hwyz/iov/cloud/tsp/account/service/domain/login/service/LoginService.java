@@ -1,7 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.service.domain.login.service;
 
 
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
+import net.hwyz.iov.cloud.framework.common.enums.CountryRegion;
 
 /**
  * 登录领域服务接口

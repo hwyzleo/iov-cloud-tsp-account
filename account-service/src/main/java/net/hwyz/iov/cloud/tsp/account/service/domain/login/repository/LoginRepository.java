@@ -1,9 +1,9 @@
 package net.hwyz.iov.cloud.tsp.account.service.domain.login.repository;
 
 
+import net.hwyz.iov.cloud.framework.common.domain.BaseRepository;
+import net.hwyz.iov.cloud.framework.common.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.model.LoginDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseRepository;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 
 import java.util.Optional;
 

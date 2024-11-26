@@ -1,11 +1,11 @@
 package net.hwyz.iov.cloud.tsp.account.api.feign.mp;
 
 
+import net.hwyz.iov.cloud.framework.common.bean.Response;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.SendSmsLoginVerifyCodeRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.SmsVerifyCodeLoginRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.WxMobileCodeLoginRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.response.LoginMpResponse;
-import net.hwyz.iov.cloud.tsp.framework.commons.bean.Response;
 
 /**
  * 登录相关手机接口

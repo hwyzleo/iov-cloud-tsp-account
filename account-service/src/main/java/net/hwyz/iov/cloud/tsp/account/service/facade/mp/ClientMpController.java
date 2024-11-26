@@ -3,10 +3,10 @@ package net.hwyz.iov.cloud.tsp.account.service.facade.mp;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.hwyz.iov.cloud.framework.common.bean.Response;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.UpdateClientConfigRequest;
 import net.hwyz.iov.cloud.tsp.account.api.feign.mp.ClientMpApi;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.ClientAppService;
-import net.hwyz.iov.cloud.tsp.framework.commons.bean.Response;
 import org.springframework.web.bind.annotation.*;
 
 /**

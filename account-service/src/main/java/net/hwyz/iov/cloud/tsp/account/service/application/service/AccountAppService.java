@@ -1,6 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.service.application.service;
 
 import lombok.RequiredArgsConstructor;
+import net.hwyz.iov.cloud.framework.common.enums.Gender;
 import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfo;
 import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfoMp;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
@@ -9,7 +10,6 @@ import net.hwyz.iov.cloud.tsp.account.service.domain.account.service.AccountServ
 import net.hwyz.iov.cloud.tsp.account.service.domain.external.service.ExObjectService;
 import net.hwyz.iov.cloud.tsp.account.service.facade.assembler.AccountInfoAssembler;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.AccountNotExistException;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.Gender;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.enums.ObjectAccessPermission;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.request.GeneratePreSignedUrlRequest;

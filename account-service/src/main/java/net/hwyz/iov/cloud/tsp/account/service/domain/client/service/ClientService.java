@@ -1,8 +1,8 @@
 package net.hwyz.iov.cloud.tsp.account.service.domain.client.service;
 
 
+import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
 
 /**
  * 客户端领域服务接口

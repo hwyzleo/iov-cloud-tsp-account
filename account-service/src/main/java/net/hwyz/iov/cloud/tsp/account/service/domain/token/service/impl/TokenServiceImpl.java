@@ -1,11 +1,11 @@
 package net.hwyz.iov.cloud.tsp.account.service.domain.token.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.tsp.account.service.domain.factory.TokenFactory;
 import net.hwyz.iov.cloud.tsp.account.service.domain.token.model.TokenDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.token.repository.TokenRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.token.service.TokenService;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

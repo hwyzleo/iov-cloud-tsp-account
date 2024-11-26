@@ -1,9 +1,9 @@
 package net.hwyz.iov.cloud.tsp.account.service.application.service;
 
 import lombok.RequiredArgsConstructor;
+import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.tsp.account.api.contract.UserIdentity;
 import net.hwyz.iov.cloud.tsp.account.service.domain.token.service.TokenService;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
 import org.springframework.stereotype.Service;
 
 /**

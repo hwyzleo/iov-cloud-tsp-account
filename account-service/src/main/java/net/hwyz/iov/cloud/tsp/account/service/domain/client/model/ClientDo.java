@@ -3,10 +3,10 @@ package net.hwyz.iov.cloud.tsp.account.service.domain.client.model;
 import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
+import net.hwyz.iov.cloud.framework.common.domain.BaseDo;
+import net.hwyz.iov.cloud.framework.common.enums.ClientType;
+import net.hwyz.iov.cloud.framework.common.enums.Os;
 import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.ClientOperation;
-import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.Os;
 
 import java.util.Date;
 

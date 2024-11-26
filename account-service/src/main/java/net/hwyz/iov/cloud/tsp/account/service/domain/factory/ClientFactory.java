@@ -1,7 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.service.domain.factory;
 
+import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
 import org.springframework.stereotype.Component;
 
 /**

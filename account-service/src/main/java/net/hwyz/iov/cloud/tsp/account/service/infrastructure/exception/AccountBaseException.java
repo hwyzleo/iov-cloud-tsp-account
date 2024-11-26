@@ -1,6 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception;
 
-import net.hwyz.iov.cloud.tsp.framework.commons.exception.BaseException;
+
+import net.hwyz.iov.cloud.framework.common.exception.BaseException;
 
 /**
  * 账号服务基础异常

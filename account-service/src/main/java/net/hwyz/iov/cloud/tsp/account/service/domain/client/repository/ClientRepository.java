@@ -1,9 +1,9 @@
 package net.hwyz.iov.cloud.tsp.account.service.domain.client.repository;
 
 
+import net.hwyz.iov.cloud.framework.common.domain.BaseRepository;
+import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseRepository;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
 
 import java.util.Optional;
 

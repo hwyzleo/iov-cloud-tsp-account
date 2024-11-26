@@ -3,8 +3,8 @@ package net.hwyz.iov.cloud.tsp.account.service.domain.token.model;
 import cn.hutool.core.util.IdUtil;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
-import net.hwyz.iov.cloud.tsp.framework.commons.domain.BaseDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.ClientType;
+import net.hwyz.iov.cloud.framework.common.domain.BaseDo;
+import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 
 import java.util.Date;
 

@@ -1,7 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.service.domain.factory;
 
+import net.hwyz.iov.cloud.framework.common.enums.CountryRegion;
 import net.hwyz.iov.cloud.tsp.account.service.domain.login.model.LoginDo;
-import net.hwyz.iov.cloud.tsp.framework.commons.enums.CountryRegion;
 import org.springframework.stereotype.Component;
 
 /**

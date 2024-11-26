@@ -1,8 +1,8 @@
 package net.hwyz.iov.cloud.tsp.account.api.feign.mp;
 
+import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
+import net.hwyz.iov.cloud.framework.common.bean.Response;
 import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfoMp;
-import net.hwyz.iov.cloud.tsp.framework.commons.bean.ClientAccount;
-import net.hwyz.iov.cloud.tsp.framework.commons.bean.Response;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
 
 /**
