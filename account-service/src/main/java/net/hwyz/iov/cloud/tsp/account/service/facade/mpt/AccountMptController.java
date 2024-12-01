@@ -36,7 +36,8 @@ public class AccountMptController extends BaseController implements AccountMptAp
     /**
      * 分页查询账号信息
      *
-     * @param account 账号信息
+     * @param account    账号信息
+     * @param mptAccount 后台管理用户
      * @return 账号信息列表
      */
     @RequiresPermissions("tsp:account:list")

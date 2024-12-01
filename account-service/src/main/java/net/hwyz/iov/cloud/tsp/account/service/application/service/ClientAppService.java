@@ -8,7 +8,14 @@ import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.repository.ClientRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.service.ClientService;
 import net.hwyz.iov.cloud.tsp.account.service.facade.assembler.ClientResponseAssembler;
+import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.dao.ClientDao;
+import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.ClientPo;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 客户端相关应用服务类
@@ -19,8 +26,29 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ClientAppService {
 
+    private final ClientDao clientDao;
     private final ClientService clientService;
     private final ClientRepository clientRepository;
+
+    /**
+     * 查询客户端信息
+     *
+     * @param accountId  账号ID
+     * @param clientId   客户端ID
+     * @param clientType 客户端类型
+     * @param beginTime  开始时间
+     * @param endTime    结束时间
+     * @return 客户端信息列表
+     */
+    public List<ClientPo> search(String accountId, String clientId, String clientType, Date beginTime, Date endTime) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("accountId", accountId);
+        map.put("clientId", clientId);
+        map.put("clientType", clientType);
+        map.put("beginTime", beginTime);
+        map.put("endTime", endTime);
+        return clientDao.selectPoByMap(map);
+    }
 
     /**
      * 获取手机客户端

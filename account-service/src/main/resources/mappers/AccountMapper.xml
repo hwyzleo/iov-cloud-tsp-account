@@ -188,6 +188,7 @@
         SELECT <include refid="baseColumnList"/>
         FROM tb_account t
         WHERE t.row_valid = 1
+        <!-- 添加自定义条件 -->
         <if test="accountId != null and accountId != ''">
             AND t.account_id = #{accountId}
         </if>
@@ -206,7 +207,6 @@
         <if test="endTime != null">
             and date_format(t.create_time,'%Y%m%d') &lt;= date_format(#{endTime},'%Y%m%d')
         </if>
-        <!-- 添加自定义条件 -->
         ORDER BY t.id DESC
     </select>
 
