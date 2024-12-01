@@ -5,7 +5,7 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
-import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfo;
+import net.hwyz.iov.cloud.tsp.account.api.contract.Account;
 import net.hwyz.iov.cloud.tsp.account.service.domain.external.service.ExWeixinMiniProgramService;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.WeixinMiniProgramException;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,16 +47,16 @@ public class ExWeixinMiniProgramServiceImpl implements ExWeixinMiniProgramServic
     private String getMobilePath;
 
     @Override
-    public AccountInfo getMobileByCode(String mobileCode) {
+    public Account getMobileByCode(String mobileCode) {
         String accessToken = getAccessToken();
         String getMobileUrl = baseUrl + getMobilePath + "?access_token=" + accessToken;
         String jsonStr;
-        AccountInfo accountInfo;
+        Account accountInfo;
         try {
             String body = "{\"code\": \"" + mobileCode + "\"}";
             jsonStr = HttpUtil.post(getMobileUrl, body);
             JSONObject phoneInfo = JSONUtil.parseObj(jsonStr).getJSONObject("phone_info");
-            accountInfo = new AccountInfo();
+            accountInfo = new Account();
             String countryCode = phoneInfo.getStr("countryCode");
             if (StrUtil.isNotBlank(countryCode) && !countryCode.startsWith("+")) {
                 countryCode = "+" + countryCode;

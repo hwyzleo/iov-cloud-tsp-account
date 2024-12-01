@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import net.hwyz.iov.cloud.framework.common.annotation.Excel;
 
 /**
- * 手机端账号信息
+ * 账号信息
  *
  * @author hwyz_leo
  */
@@ -14,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountInfo {
+public class Account {
 
     /**
      * 国家与地区代码
@@ -23,6 +24,7 @@ public class AccountInfo {
     /**
      * 手机号
      */
+    @Excel(name = "手机号", cellType = Excel.ColumnType.STRING)
     private String mobile;
 
 }

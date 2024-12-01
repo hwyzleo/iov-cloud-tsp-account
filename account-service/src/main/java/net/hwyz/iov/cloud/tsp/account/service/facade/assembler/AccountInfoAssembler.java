@@ -1,6 +1,6 @@
 package net.hwyz.iov.cloud.tsp.account.service.facade.assembler;
 
-import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfo;
+import net.hwyz.iov.cloud.tsp.account.api.contract.Account;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -26,6 +26,6 @@ public interface AccountInfoAssembler {
     @Mappings({
             @Mapping(target = "countryRegionCode", source = "countryRegion.code")
     })
-    AccountInfo fromDo(AccountDo accountDo);
+    Account fromDo(AccountDo accountDo);
 
 }

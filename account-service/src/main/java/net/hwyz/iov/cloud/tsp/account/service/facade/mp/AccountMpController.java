@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
 import net.hwyz.iov.cloud.framework.common.bean.Response;
-import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfoMp;
+import net.hwyz.iov.cloud.tsp.account.api.contract.AccountMp;
 import net.hwyz.iov.cloud.tsp.account.api.feign.mp.AccountMpApi;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.AccountAppService;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
@@ -27,7 +27,7 @@ public class AccountMpController implements AccountMpApi {
 
     @Override
     @GetMapping(value = "/info")
-    public Response<AccountInfoMp> getAccountInfo(@RequestHeader ClientAccount clientAccount) {
+    public Response<AccountMp> getAccountInfo(@RequestHeader ClientAccount clientAccount) {
         logger.info("手机客户端[{}]获取账号[{}]信息", clientAccount.getClientId(), clientAccount.getAccountId());
         return new Response<>(accountAppService.getMpAccountInfo(clientAccount.getAccountId()));
     }

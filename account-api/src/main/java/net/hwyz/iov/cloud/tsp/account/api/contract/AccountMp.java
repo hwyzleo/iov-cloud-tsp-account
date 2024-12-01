@@ -16,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class AccountInfoMp extends AccountInfo {
+public class AccountMp extends Account {
 
     /**
      * 昵称

@@ -24,6 +24,13 @@
             <artifactId>oss-api</artifactId>
             <version>${oss.version}</version>
         </dependency>
+
+        <!-- Java Servlet -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <repositories>

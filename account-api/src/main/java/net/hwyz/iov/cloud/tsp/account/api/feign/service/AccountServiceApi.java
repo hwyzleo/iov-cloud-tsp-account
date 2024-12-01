@@ -1,6 +1,6 @@
 package net.hwyz.iov.cloud.tsp.account.api.feign.service;
 
-import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfo;
+import net.hwyz.iov.cloud.tsp.account.api.contract.Account;
 
 /**
  * 账号相关服务接口
@@ -15,6 +15,6 @@ public interface AccountServiceApi {
      * @param accountId 账号ID
      * @return 账号信息
      */
-    AccountInfo getAccountInfo(String accountId);
+    Account getAccountInfo(String accountId);
 
 }

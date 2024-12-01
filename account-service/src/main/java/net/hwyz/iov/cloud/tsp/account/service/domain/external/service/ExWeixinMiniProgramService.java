@@ -1,6 +1,6 @@
 package net.hwyz.iov.cloud.tsp.account.service.domain.external.service;
 
-import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfo;
+import net.hwyz.iov.cloud.tsp.account.api.contract.Account;
 
 /**
  * 外部微信小程序服务
@@ -15,6 +15,6 @@ public interface ExWeixinMiniProgramService {
      * @param mobileCode 手机号授权码
      * @return 账号手机信息
      */
-    AccountInfo getMobileByCode(String mobileCode);
+    Account getMobileByCode(String mobileCode);
 
 }

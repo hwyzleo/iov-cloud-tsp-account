@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.framework.common.domain.DoState;
 import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.framework.common.enums.CountryRegion;
-import net.hwyz.iov.cloud.tsp.account.api.contract.AccountInfo;
+import net.hwyz.iov.cloud.tsp.account.api.contract.Account;
 import net.hwyz.iov.cloud.tsp.account.api.contract.response.LoginMpResponse;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.repository.AccountRepository;
@@ -103,7 +103,7 @@ public class LoginAppService {
      * @return 登录响应
      */
     public LoginMpResponse weixinMiniProgramLogin(String clientId, String mobileCode) {
-        AccountInfo accountInfo = exWeixinMiniProgramService.getMobileByCode(mobileCode);
+        Account accountInfo = exWeixinMiniProgramService.getMobileByCode(mobileCode);
         if (accountInfo != null) {
             CountryRegion countryRegion = CountryRegion.valOf(accountInfo.getCountryRegionCode());
             AccountDo accountDo = accountService.getOrCreate(countryRegion, accountInfo.getMobile());
