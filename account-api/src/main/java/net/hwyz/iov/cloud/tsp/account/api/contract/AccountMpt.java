@@ -19,6 +19,11 @@ import java.util.Date;
 public class AccountMpt extends BaseRequest {
 
     /**
+     * 主键
+     */
+    private Long id;
+
+    /**
      * 账号ID
      */
     @Excel(name = "账号ID", width = 25)

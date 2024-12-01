@@ -2,13 +2,12 @@ package net.hwyz.iov.cloud.tsp.account.api.contract;
 
 import lombok.*;
 import net.hwyz.iov.cloud.framework.common.annotation.Excel;
-import net.hwyz.iov.cloud.framework.common.enums.Os;
 import net.hwyz.iov.cloud.framework.common.web.domain.BaseRequest;
 
 import java.util.Date;
 
 /**
- * 管理后台账号信息
+ * 管理后台令牌信息
  *
  * @author hwyz_leo
  */
@@ -17,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class ClientMpt extends BaseRequest {
+public class TokenMpt extends BaseRequest {
 
     /**
      * 主键
@@ -36,9 +35,14 @@ public class ClientMpt extends BaseRequest {
     private String clientId;
 
     /**
-     * 推送注册ID
+     * 车架号
      */
-    private String pushRegId;
+    private String vin;
+
+    /**
+     * 权限范围
+     */
+    private String scope;
 
     /**
      * 客户端类型
@@ -46,18 +50,28 @@ public class ClientMpt extends BaseRequest {
     private String clientType;
 
     /**
-     * 操作系统
+     * 发行时间
      */
-    private Os os;
+    private Date issueTime;
 
     /**
-     * 最后登录IP
+     * 访问令牌
      */
-    private String ip;
+    private String accessToken;
 
     /**
-     * 最后登录时间
+     * 访问令牌过期时间
      */
-    private Date loginTime;
+    private Date accessTokenExpires;
+
+    /**
+     * 刷新令牌
+     */
+    private String refreshToken;
+
+    /**
+     * 刷新令牌过期时间
+     */
+    private Date refreshTokenExpires;
 
 }

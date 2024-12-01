@@ -189,7 +189,28 @@
         FROM tb_token t
         WHERE t.row_valid = 1
         <!-- 添加自定义条件 -->
-        ORDER BY t.id DESC
+        <if test="accountId != null and accountId != ''">
+            AND t.account_id = #{accountId}
+        </if>
+        <if test="clientId != null and clientId != ''">
+            AND t.client_id = #{clientId}
+        </if>
+        <if test="clientType != null and clientType != ''">
+            AND t.client_type = #{clientType}
+        </if>
+        <if test="vin != null and vin != ''">
+            AND t.vin LIKE #{vin}
+        </if>
+        <if test="accessToken != null and accessToken != ''">
+            AND t.access_token = #{accessToken}
+        </if>
+        <if test="beginTime != null">
+            and date_format(t.issue_time,'%Y%m%d') &gt;= date_format(#{beginTime},'%Y%m%d')
+        </if>
+        <if test="endTime != null">
+            and date_format(t.issue_time,'%Y%m%d') &lt;= date_format(#{endTime},'%Y%m%d')
+        </if>
+        ORDER BY t.issue_time DESC, t.id DESC
     </select>
 
     <!-- 根据Map对象统计记录数 -->
