@@ -204,7 +204,7 @@
         <if test="endTime != null">
             and date_format(t.login_time,'%Y%m%d') &lt;= date_format(#{endTime},'%Y%m%d')
         </if>
-        ORDER BY t.id DESC
+        ORDER BY t.login_time DESC, t.id DESC
     </select>
 
     <!-- 根据Map对象统计记录数 -->
