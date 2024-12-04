@@ -8,6 +8,7 @@ pipeline {
         DIR_API = "${env.DIR_KEY}-api"
         DIR_SERVICE = "${env.DIR_KEY}-service"
         IMAGE_NAME = "${env.REGISTRY_URL}/${PROJECT_NAME}:${env.BUILD_NUMBER}"
+        DEPLOY_API = ${env.DEPLOY_API}
     }
 
     tools {
@@ -23,7 +24,7 @@ pipeline {
                 script {
                     dir(DIR_API) {
                         sh '''
-                            echo '============================== ${env.DEPLOY_API} =============================='
+                            echo '============================== ${DEPLOY_API} =============================='
                             echo '============================== 构建并发布 =============================='
                             mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}
                         '''
