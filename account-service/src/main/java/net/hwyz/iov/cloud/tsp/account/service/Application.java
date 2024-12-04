@@ -14,7 +14,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author hwyz_leo
  */
 @Slf4j
-@EnableCustomConfig
 @EnableDiscoveryClient
 @EnableCustomFeignClients
 @SpringBootApplication
