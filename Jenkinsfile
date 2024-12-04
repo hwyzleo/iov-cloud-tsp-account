@@ -8,7 +8,7 @@ pipeline {
         DIR_API = "${env.DIR_KEY}-api"
         DIR_SERVICE = "${env.DIR_KEY}-service"
         IMAGE_NAME = "${env.REGISTRY_URL}/${PROJECT_NAME}:${env.BUILD_NUMBER}"
-        DEPLOY_API = ${env.DEPLOY_API}
+        DEPLOY_API = "${env.DEPLOY_API}"
     }
 
     tools {
