@@ -16,6 +16,9 @@ pipeline {
 
     stages {
         stage('构建并发布') {
+            when {
+                expression { return ${env.DEPLOY_API} }
+            }
             steps {
                 script {
                     dir(DIR_API) {
