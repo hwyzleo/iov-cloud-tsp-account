@@ -11,20 +11,21 @@ pipeline {
         DEPLOY_API = "${env.DEPLOY_API}"
     }
 
+    parameters {
+        choice(choices: [true, false], description: '是否发布API', name: 'DEPLOY_API')
+    }
+
     tools {
         maven 'M3'
     }
 
     stages {
         stage('构建并发布') {
-            when {
-                expression { return env.DEPLOY_API }
-            }
+            when { expression { params.DEPLOY_API == true } }
             steps {
                 script {
                     dir(DIR_API) {
                         sh '''
-                            echo '============================== ${DEPLOY_API} =============================='
                             echo '============================== 构建并发布 =============================='
                             mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}
                         '''
