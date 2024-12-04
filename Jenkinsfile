@@ -23,6 +23,7 @@ pipeline {
                 script {
                     dir(DIR_API) {
                         sh '''
+                            echo '============================== ${env.DEPLOY_API} =============================='
                             echo '============================== 构建并发布 =============================='
                             mvn clean deploy -DaltDeploymentRepository=${REPO_ID}::default::${REPO_URL}
                         '''
