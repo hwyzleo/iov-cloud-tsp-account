@@ -3,7 +3,6 @@ package net.hwyz.iov.cloud.tsp.account.service.facade.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.tsp.account.api.contract.Account;
-import net.hwyz.iov.cloud.tsp.account.api.feign.service.AccountServiceApi;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.AccountAppService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/service/account")
-public class AccountServiceController implements AccountServiceApi {
+public class AccountServiceController {
 
     private final AccountAppService accountAppService;
 
@@ -29,7 +28,6 @@ public class AccountServiceController implements AccountServiceApi {
      * @param accountId 账号ID
      * @return 账号信息
      */
-    @Override
     @GetMapping(value = "/{accountId}")
     public Account getAccountInfo(@PathVariable("accountId") String accountId) {
         logger.info("获取账号[{}]信息", accountId);
