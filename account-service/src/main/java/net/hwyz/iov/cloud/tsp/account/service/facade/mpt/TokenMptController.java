@@ -40,7 +40,7 @@ public class TokenMptController extends BaseController implements TokenMptApi {
      * @param mptAccount 后台管理用户
      * @return 令牌信息列表
      */
-    @RequiresPermissions("user:account:token:list")
+    @RequiresPermissions("customer:account:token:list")
     @Override
     @GetMapping(value = "/list")
     public TableDataInfo list(TokenMpt token, @RequestHeader(required = false) MptAccount mptAccount) {
@@ -60,7 +60,7 @@ public class TokenMptController extends BaseController implements TokenMptApi {
      * @param mptAccount 后台管理用户
      */
     @Log(title = "令牌管理", businessType = BusinessType.EXPORT)
-    @RequiresPermissions("user:account:token:export")
+    @RequiresPermissions("customer:account:token:export")
     @Override
     @PostMapping("/export")
     public void export(HttpServletResponse response, TokenMpt token, @RequestHeader(required = false) MptAccount mptAccount) {

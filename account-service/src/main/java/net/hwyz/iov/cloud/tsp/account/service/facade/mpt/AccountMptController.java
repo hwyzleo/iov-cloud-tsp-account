@@ -40,7 +40,7 @@ public class AccountMptController extends BaseController implements AccountMptAp
      * @param mptAccount 后台管理用户
      * @return 账号信息列表
      */
-    @RequiresPermissions("user:account:account:list")
+    @RequiresPermissions("customer:account:operation:list")
     @Override
     @GetMapping(value = "/list")
     public TableDataInfo list(AccountMpt account, @RequestHeader(required = false) MptAccount mptAccount) {
@@ -60,7 +60,7 @@ public class AccountMptController extends BaseController implements AccountMptAp
      * @param mptAccount 后台管理用户
      */
     @Log(title = "账号管理", businessType = BusinessType.EXPORT)
-    @RequiresPermissions("user:account:account:export")
+    @RequiresPermissions("customer:account:operation:export")
     @Override
     @PostMapping("/export")
     public void export(HttpServletResponse response, AccountMpt account, @RequestHeader(required = false) MptAccount mptAccount) {
