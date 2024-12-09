@@ -40,7 +40,7 @@ public class ClientMptController extends BaseController implements ClientMptApi 
      * @param mptAccount 后台管理用户
      * @return 客户端信息列表
      */
-    @RequiresPermissions("tsp:client:list")
+    @RequiresPermissions("user:account:client:list")
     @Override
     @GetMapping(value = "/list")
     public TableDataInfo list(ClientMpt client, @RequestHeader(required = false) MptAccount mptAccount) {
@@ -60,7 +60,7 @@ public class ClientMptController extends BaseController implements ClientMptApi 
      * @param mptAccount 后台管理用户
      */
     @Log(title = "客户端管理", businessType = BusinessType.EXPORT)
-    @RequiresPermissions("tsp:client:export")
+    @RequiresPermissions("user:account:client:export")
     @Override
     @PostMapping("/export")
     public void export(HttpServletResponse response, ClientMpt client, @RequestHeader(required = false) MptAccount mptAccount) {
