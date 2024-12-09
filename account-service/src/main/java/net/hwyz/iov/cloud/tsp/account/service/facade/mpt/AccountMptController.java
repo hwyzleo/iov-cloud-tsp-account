@@ -49,7 +49,7 @@ public class AccountMptController extends BaseController implements AccountMptAp
         List<AccountPo> accountPoList = accountAppService.search(account.getAccountId(), account.getMobile(),
                 account.getRegSource(), account.getEnable(), getBeginTime(account), getEndTime(account));
         List<AccountMpt> accountMptList = AccountMptAssembler.INSTANCE.fromPoList(accountPoList);
-        return getDataTable(accountMptList);
+        return getDataTable(accountPoList, accountMptList);
     }
 
     /**

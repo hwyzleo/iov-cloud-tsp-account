@@ -49,7 +49,7 @@ public class TokenMptController extends BaseController implements TokenMptApi {
         List<TokenPo> tokenPoList = tokenAppService.search(token.getAccountId(), token.getClientId(),
                 token.getClientType(), token.getVin(), token.getAccessToken(), getBeginTime(token), getEndTime(token));
         List<TokenMpt> tokenMptList = TokenMptAssembler.INSTANCE.fromPoList(tokenPoList);
-        return getDataTable(tokenMptList);
+        return getDataTable(tokenPoList, tokenMptList);
     }
 
     /**

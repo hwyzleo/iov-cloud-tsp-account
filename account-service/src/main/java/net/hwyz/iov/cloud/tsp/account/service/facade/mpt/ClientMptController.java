@@ -49,7 +49,7 @@ public class ClientMptController extends BaseController implements ClientMptApi 
         List<ClientPo> clientPoList = clientAppService.search(client.getAccountId(), client.getClientId(),
                 client.getClientType(), getBeginTime(client), getEndTime(client));
         List<ClientMpt> clientMptList = ClientMptAssembler.INSTANCE.fromPoList(clientPoList);
-        return getDataTable(clientMptList);
+        return getDataTable(clientPoList, clientMptList);
     }
 
     /**
