@@ -48,6 +48,12 @@ public class AccountPo extends BasePo {
     private String username;
 
     /**
+     * 密码哈希值
+     */
+    @TableField("password")
+    private String password;
+
+    /**
      * 手机所属国家或地区
      */
     @TableField("country_region_code")

@@ -3,9 +3,10 @@ CREATE TABLE `db_account`.`tb_account`
 (
     `id`                  BIGINT      NOT NULL AUTO_INCREMENT COMMENT '主键',
     `account_id`          VARCHAR(64) NOT NULL COMMENT '账号唯一ID',
-    `username`            VARCHAR(50)          DEFAULT NULL COMMENT '用户名',
+    `username`            VARCHAR(255)         DEFAULT NULL COMMENT '用户名',
+    `password`            VARCHAR(255)         DEFAULT NULL COMMENT '密码哈希值',
     `country_region_code` VARCHAR(20)          DEFAULT NULL COMMENT '手机所属国家或地区',
-    `mobile`              VARCHAR(15)          DEFAULT NULL COMMENT '手机号',
+    `mobile`              VARCHAR(20)          DEFAULT NULL COMMENT '手机号',
     `email`               VARCHAR(255)         DEFAULT NULL COMMENT '邮箱',
     `nickname`            VARCHAR(50)          DEFAULT NULL COMMENT '昵称',
     `avatar`              VARCHAR(255)         DEFAULT NULL COMMENT '头像',

@@ -14,6 +14,7 @@
         <result column="row_valid" property="rowValid" />
         <result column="account_id" property="accountId" />
         <result column="username" property="username" />
+        <result column="password" property="password" />
         <result column="country_region_code" property="countryRegionCode" />
         <result column="mobile" property="mobile" />
         <result column="email" property="email" />
@@ -26,18 +27,18 @@
 
     <!-- 通用查询结果列 -->
     <sql id="baseColumnList">
-        id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
+        id, account_id, username, password, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
         description, create_time, create_by, modify_time, modify_by, row_version, row_valid
     </sql>
 
     <!-- 插入 -->
     <insert id="insertPo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_account (
-            id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
+            id, account_id, username, password, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES (
-            #{id}, #{accountId}, #{username}, #{countryRegionCode}, #{mobile}, #{email}, #{nickname}, #{avatar}, #{gender}, #{regSource}, #{enable},
+            #{id}, #{accountId}, #{username}, #{password}, #{countryRegionCode}, #{mobile}, #{email}, #{nickname}, #{avatar}, #{gender}, #{regSource}, #{enable},
             #{description}, now(), #{createBy}, now(), #{modifyBy}, 1, 1
         )
     </insert>
@@ -45,13 +46,13 @@
     <!-- 批量插入 -->
     <insert id="batchInsertPo" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
         INSERT INTO tb_account (
-            id, account_id, username, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
+            id, account_id, username, password, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
         (
-            #{item.id}, #{item.accountId}, #{item.username}, #{item.countryRegionCode}, #{item.mobile}, #{item.email}, #{item.nickname}, #{item.avatar}, #{item.gender}, #{item.regSource}, #{item.enable},
+            #{item.id}, #{item.accountId}, #{item.username}, #{item.password}, #{item.countryRegionCode}, #{item.mobile}, #{item.email}, #{item.nickname}, #{item.avatar}, #{item.gender}, #{item.regSource}, #{item.enable},
             #{item.description}, now(), #{item.createBy}, now(), #{item.modifyBy}, 1, 1
         )
         </foreach>
@@ -65,6 +66,9 @@
         </if>
         <if test="username != null and username != ''">
             t.username = #{username},
+        </if>
+        <if test="password != null and password != ''">
+            t.password = #{password},
         </if>
         <if test="countryRegionCode != null and countryRegionCode != ''">
             t.country_region_code = #{countryRegionCode},
@@ -137,6 +141,9 @@
         </if>
         <if test="username != null and username != ''">
             AND t.username = #{username}
+        </if>
+        <if test="password != null and password != ''">
+            AND t.password = #{password}
         </if>
         <if test="countryRegionCode != null and countryRegionCode != ''">
             AND t.country_region_code = #{countryRegionCode}
