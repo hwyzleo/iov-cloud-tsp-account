@@ -3,13 +3,10 @@ package net.hwyz.iov.cloud.tsp.account.service.application.service;
 import lombok.RequiredArgsConstructor;
 import net.hwyz.iov.cloud.framework.common.enums.Gender;
 import net.hwyz.iov.cloud.framework.common.util.ParamHelper;
-import net.hwyz.iov.cloud.tsp.account.api.contract.Account;
-import net.hwyz.iov.cloud.tsp.account.api.contract.AccountMp;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.repository.AccountRepository;
 import net.hwyz.iov.cloud.tsp.account.service.domain.account.service.AccountService;
 import net.hwyz.iov.cloud.tsp.account.service.domain.external.service.ExObjectService;
-import net.hwyz.iov.cloud.tsp.account.service.facade.assembler.AccountInfoAssembler;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.AccountNotExistException;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.dao.AccountDao;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.AccountPo;
@@ -19,10 +16,7 @@ import net.hwyz.iov.cloud.tsp.oss.api.contract.request.GeneratePreSignedUrlReque
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 账号应用服务类
@@ -65,30 +59,13 @@ public class AccountAppService {
     }
 
     /**
-     * 获取手机端账号信息
-     *
-     * @param accountId 账号唯一ID
-     * @return 手机端账号信息
-     */
-    public AccountMp getMpAccountInfo(String accountId) {
-        return accountService.get(accountId).map(accountDo -> AccountMp.builder()
-                .mobile(accountDo.getMobile())
-                .avatar(accountDo.getAvatar())
-                .nickname(accountDo.getNickname())
-                .gender(accountDo.getGender().name())
-                .build()).orElse(null);
-    }
-
-    /**
      * 获取账号信息
      *
      * @param accountId 账号ID
-     * @return 账号信息
+     * @return 账号信息领域对象
      */
-    public Account getAccountInfo(String accountId) {
-        return accountService.get(accountId).map(accountDo -> {
-            return AccountInfoAssembler.INSTANCE.fromDo(accountDo);
-        }).orElse(null);
+    public Optional<AccountDo> getAccountInfo(String accountId) {
+        return accountService.get(accountId);
     }
 
     /**

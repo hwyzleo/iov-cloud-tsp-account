@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.tsp.account.api.contract.Account;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.AccountAppService;
+import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
+import net.hwyz.iov.cloud.tsp.account.service.facade.assembler.AccountInfoAssembler;
+import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.AccountNotExistException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +34,9 @@ public class AccountServiceController {
     @GetMapping(value = "/{accountId}")
     public Account getAccountInfo(@PathVariable("accountId") String accountId) {
         logger.info("获取账号[{}]信息", accountId);
-        return accountAppService.getAccountInfo(accountId);
+        AccountDo accountDo = accountAppService.getAccountInfo(accountId)
+                .orElseThrow(() -> new AccountNotExistException(accountId));
+        return AccountInfoAssembler.INSTANCE.fromDo(accountDo);
     }
 
 }

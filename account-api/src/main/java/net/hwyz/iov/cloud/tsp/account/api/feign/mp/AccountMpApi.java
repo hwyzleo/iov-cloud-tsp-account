@@ -3,6 +3,7 @@ package net.hwyz.iov.cloud.tsp.account.api.feign.mp;
 import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
 import net.hwyz.iov.cloud.framework.common.bean.Response;
 import net.hwyz.iov.cloud.tsp.account.api.contract.AccountMp;
+import net.hwyz.iov.cloud.tsp.account.api.contract.AccountQrcodeMp;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
 
 /**
@@ -19,6 +20,14 @@ public interface AccountMpApi {
      * @return 手机账户信息
      */
     Response<AccountMp> getAccountInfo(ClientAccount clientAccount);
+
+    /**
+     * 获取账号二维码信息
+     *
+     * @param clientAccount 终端用户
+     * @return 手机账户二维码信息
+     */
+    Response<AccountQrcodeMp> getAccountQrcode(ClientAccount clientAccount);
 
     /**
      * 生成头像上传地址

@@ -6,8 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
 import net.hwyz.iov.cloud.framework.common.bean.Response;
 import net.hwyz.iov.cloud.tsp.account.api.contract.AccountMp;
+import net.hwyz.iov.cloud.tsp.account.api.contract.AccountQrcodeMp;
 import net.hwyz.iov.cloud.tsp.account.api.feign.mp.AccountMpApi;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.AccountAppService;
+import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
+import net.hwyz.iov.cloud.tsp.account.service.facade.assembler.AccountMpAssembler;
+import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.AccountNotExistException;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +33,18 @@ public class AccountMpController implements AccountMpApi {
     @GetMapping(value = "/info")
     public Response<AccountMp> getAccountInfo(@RequestHeader ClientAccount clientAccount) {
         logger.info("手机客户端[{}]获取账号[{}]信息", clientAccount.getClientId(), clientAccount.getAccountId());
-        return new Response<>(accountAppService.getMpAccountInfo(clientAccount.getAccountId()));
+        AccountDo accountDo = accountAppService.getAccountInfo(clientAccount.getAccountId())
+                .orElseThrow(() -> new AccountNotExistException(clientAccount.getAccountId()));
+        return new Response<>(AccountMpAssembler.INSTANCE.fromDo(accountDo));
+    }
+
+    @Override
+    @GetMapping(value = "/qrcode")
+    public Response<AccountQrcodeMp> getAccountQrcode(@RequestHeader ClientAccount clientAccount) {
+        logger.info("手机客户端[{}]获取账号[{}]二维码信息", clientAccount.getClientId(), clientAccount.getAccountId());
+        AccountDo accountDo = accountAppService.getAccountInfo(clientAccount.getAccountId())
+                .orElseThrow(() -> new AccountNotExistException(clientAccount.getAccountId()));
+        return new Response<>(AccountQrcodeMp.builder().qrcode(accountDo.getAccountId()).build());
     }
 
     @Override
