@@ -52,10 +52,4 @@ public class LoginMpController implements LoginMpApi {
         return new Response<>(loginAppService.weixinMiniProgramLogin(clientId, request.getMobileCode()));
     }
 
-    @Override
-    @PostMapping(value = "/action/logout")
-    public Response<Void> logout(@RequestHeader ClientAccount clientAccount) {
-        logger.info("手机客户端[{}]账号[{}]退出登录", clientAccount.getClientId(), clientAccount.getAccountId());
-        return new Response<>();
-    }
 }

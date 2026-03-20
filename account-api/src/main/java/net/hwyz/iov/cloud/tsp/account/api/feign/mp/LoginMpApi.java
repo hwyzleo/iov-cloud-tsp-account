@@ -42,12 +42,4 @@ public interface LoginMpApi {
      */
     Response<LoginMpResponse> weixinMobileCodeLogin(String clientId, WxMobileCodeLoginRequest request);
 
-    /**
-     * 退出登录
-     *
-     * @param clientAccount 终端用户
-     * @return 操作结果
-     */
-    Response<Void> logout(ClientAccount clientAccount);
-
 }
