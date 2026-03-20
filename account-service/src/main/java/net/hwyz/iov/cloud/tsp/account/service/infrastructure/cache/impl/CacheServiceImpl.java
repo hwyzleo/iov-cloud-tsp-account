@@ -12,6 +12,7 @@ import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.Token
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.util.Optional;
 
 /**
@@ -64,8 +65,12 @@ public class CacheServiceImpl implements CacheService {
 
     @Override
     public void setToken(TokenPo tokenPo) {
-        redisTemplate.opsForValue().set(REDIS_KEY_PREFIX_TOKEN + tokenPo.getClientType() + ":" + tokenPo.getAccessToken(),
-                JSONUtil.parse(tokenPo).toJSONString(0));
+        long ttlMillis = tokenPo.getAccessTokenExpires().getTime() - System.currentTimeMillis();
+        if (ttlMillis > 0) {
+            redisTemplate.opsForValue().set(REDIS_KEY_PREFIX_TOKEN + tokenPo.getClientType() + ":" + tokenPo.getAccessToken(),
+                    JSONUtil.parse(tokenPo).toJSONString(0),
+                    Duration.ofMillis(ttlMillis));
+        }
     }
 
     @Override
