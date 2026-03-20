@@ -55,11 +55,7 @@ public class AccountMpController implements AccountMpApi {
     }
 
     @Override
-    @PostMapping(
-            value = "/action/modifyAvatar",
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @PostMapping("/action/modifyAvatar")
     public Response<Void> modifyAvatar(@RequestHeader ClientAccount clientAccount, @RequestParam String avatar) {
         logger.info("手机客户端[{}]修改账号[{}]头像", clientAccount.getClientId(), clientAccount.getAccountId());
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("avatar", avatar));
@@ -67,11 +63,7 @@ public class AccountMpController implements AccountMpApi {
     }
 
     @Override
-    @PostMapping(
-            value = "/action/modifyNickname",
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @PostMapping("/action/modifyNickname")
     public Response<Void> modifyNickname(@RequestHeader ClientAccount clientAccount, @RequestParam String nickname) {
         logger.info("手机客户端[{}]修改账号[{}]昵称[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), nickname);
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("nickname", nickname));
@@ -79,11 +71,7 @@ public class AccountMpController implements AccountMpApi {
     }
 
     @Override
-    @PostMapping(
-            value = "/action/modifyBio",
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @PostMapping("/action/modifyBio")
     public Response<Void> modifyBio(@RequestHeader ClientAccount clientAccount, @RequestParam String bio) {
         logger.info("手机客户端[{}]修改账号[{}]签名简介[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), bio);
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("bio", bio));
@@ -91,11 +79,7 @@ public class AccountMpController implements AccountMpApi {
     }
 
     @Override
-    @PostMapping(
-            value = "/action/modifyGender",
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @PostMapping("/action/modifyGender")
     public Response<Void> modifyGender(@RequestHeader ClientAccount clientAccount, @RequestParam String gender) {
         logger.info("手机客户端[{}]修改账号[{}]性别[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), gender);
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("gender", gender));
@@ -103,11 +87,7 @@ public class AccountMpController implements AccountMpApi {
     }
 
     @Override
-    @PostMapping(
-            value = "/action/modifyBirthday",
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @PostMapping("/action/modifyBirthday")
     public Response<Void> modifyBirthday(@RequestHeader ClientAccount clientAccount, @RequestParam String birthday) {
         logger.info("手机客户端[{}]修改账号[{}]生日[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), birthday);
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("birthday", birthday));
@@ -115,11 +95,7 @@ public class AccountMpController implements AccountMpApi {
     }
 
     @Override
-    @PostMapping(
-            value = "/action/modifyCity",
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @PostMapping("/action/modifyCity")
     public Response<Void> modifyCity(@RequestHeader ClientAccount clientAccount, @RequestParam String city) {
         logger.info("手机客户端[{}]修改账号[{}]用车城市[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), city);
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("city", city));
