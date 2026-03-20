@@ -6,6 +6,8 @@ import net.hwyz.iov.cloud.tsp.account.api.contract.AccountMp;
 import net.hwyz.iov.cloud.tsp.account.api.contract.AccountQrcodeMp;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
 
+import java.util.Map;
+
 /**
  * 账户相关手机接口
  *
@@ -44,7 +46,7 @@ public interface AccountMpApi {
      * @param avatar        头像
      * @return 操作结果
      */
-    Response<Void> modifyAvatar(ClientAccount clientAccount, String avatar);
+    Response<Void> modifyAvatar(ClientAccount clientAccount, Map<String, String> avatar);
 
     /**
      * 修改昵称
@@ -53,7 +55,7 @@ public interface AccountMpApi {
      * @param nickname      昵称
      * @return 操作结果
      */
-    Response<Void> modifyNickname(ClientAccount clientAccount, String nickname);
+    Response<Void> modifyNickname(ClientAccount clientAccount, Map<String, String> nickname);
 
     /**
      * 修改签名简介
@@ -62,7 +64,7 @@ public interface AccountMpApi {
      * @param bio           签名简介
      * @return 操作结果
      */
-    Response<Void> modifyBio(ClientAccount clientAccount, String bio);
+    Response<Void> modifyBio(ClientAccount clientAccount, Map<String, String> bio);
 
     /**
      * 修改性别
@@ -71,7 +73,7 @@ public interface AccountMpApi {
      * @param gender        性别
      * @return 操作结果
      */
-    Response<Void> modifyGender(ClientAccount clientAccount, String gender);
+    Response<Void> modifyGender(ClientAccount clientAccount, Map<String, String> gender);
 
     /**
      * 修改生日
@@ -80,7 +82,7 @@ public interface AccountMpApi {
      * @param birthday      生日
      * @return 操作结果
      */
-    Response<Void> modifyBirthday(ClientAccount clientAccount, String birthday);
+    Response<Void> modifyBirthday(ClientAccount clientAccount, Map<String, String> birthday);
 
     /**
      * 修改用车城市
@@ -89,6 +91,6 @@ public interface AccountMpApi {
      * @param city          用车城市
      * @return 操作结果
      */
-    Response<Void> modifyCity(ClientAccount clientAccount, String city);
+    Response<Void> modifyCity(ClientAccount clientAccount, Map<String, String> city);
 
 }

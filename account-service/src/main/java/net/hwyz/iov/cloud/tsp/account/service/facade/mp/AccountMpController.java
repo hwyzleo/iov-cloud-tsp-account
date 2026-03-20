@@ -1,6 +1,5 @@
 package net.hwyz.iov.cloud.tsp.account.service.facade.mp;
 
-import cn.hutool.core.map.MapUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
@@ -13,8 +12,9 @@ import net.hwyz.iov.cloud.tsp.account.service.domain.account.model.AccountDo;
 import net.hwyz.iov.cloud.tsp.account.service.facade.assembler.AccountMpAssembler;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.exception.AccountNotExistException;
 import net.hwyz.iov.cloud.tsp.oss.api.contract.PreSignedUrl;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * 账户相关手机接口实现类
@@ -56,49 +56,49 @@ public class AccountMpController implements AccountMpApi {
 
     @Override
     @PostMapping("/action/modifyAvatar")
-    public Response<Void> modifyAvatar(@RequestHeader ClientAccount clientAccount, @RequestParam String avatar) {
+    public Response<Void> modifyAvatar(@RequestHeader ClientAccount clientAccount, @RequestBody Map<String, String> avatar) {
         logger.info("手机客户端[{}]修改账号[{}]头像", clientAccount.getClientId(), clientAccount.getAccountId());
-        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("avatar", avatar));
+        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), avatar);
         return new Response<>();
     }
 
     @Override
     @PostMapping("/action/modifyNickname")
-    public Response<Void> modifyNickname(@RequestHeader ClientAccount clientAccount, @RequestParam String nickname) {
-        logger.info("手机客户端[{}]修改账号[{}]昵称[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), nickname);
-        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("nickname", nickname));
+    public Response<Void> modifyNickname(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> nickname) {
+        logger.info("手机客户端[{}]修改账号[{}]昵称", clientAccount.getClientId(), clientAccount.getAccountId());
+        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), nickname);
         return new Response<>();
     }
 
     @Override
     @PostMapping("/action/modifyBio")
-    public Response<Void> modifyBio(@RequestHeader ClientAccount clientAccount, @RequestParam String bio) {
-        logger.info("手机客户端[{}]修改账号[{}]签名简介[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), bio);
-        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("bio", bio));
+    public Response<Void> modifyBio(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> bio) {
+        logger.info("手机客户端[{}]修改账号[{}]签名简介", clientAccount.getClientId(), clientAccount.getAccountId());
+        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), bio);
         return new Response<>();
     }
 
     @Override
     @PostMapping("/action/modifyGender")
-    public Response<Void> modifyGender(@RequestHeader ClientAccount clientAccount, @RequestParam String gender) {
-        logger.info("手机客户端[{}]修改账号[{}]性别[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), gender);
-        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("gender", gender));
+    public Response<Void> modifyGender(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> gender) {
+        logger.info("手机客户端[{}]修改账号[{}]性别", clientAccount.getClientId(), clientAccount.getAccountId());
+        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), gender);
         return new Response<>();
     }
 
     @Override
     @PostMapping("/action/modifyBirthday")
-    public Response<Void> modifyBirthday(@RequestHeader ClientAccount clientAccount, @RequestParam String birthday) {
-        logger.info("手机客户端[{}]修改账号[{}]生日[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), birthday);
-        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("birthday", birthday));
+    public Response<Void> modifyBirthday(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> birthday) {
+        logger.info("手机客户端[{}]修改账号[{}]生日", clientAccount.getClientId(), clientAccount.getAccountId());
+        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), birthday);
         return new Response<>();
     }
 
     @Override
     @PostMapping("/action/modifyCity")
-    public Response<Void> modifyCity(@RequestHeader ClientAccount clientAccount, @RequestParam String city) {
-        logger.info("手机客户端[{}]修改账号[{}]用车城市[{}]", clientAccount.getClientId(), clientAccount.getAccountId(), city);
-        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), MapUtil.of("city", city));
+    public Response<Void> modifyCity(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> city) {
+        logger.info("手机客户端[{}]修改账号[{}]用车城市", clientAccount.getClientId(), clientAccount.getAccountId());
+        accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), city);
         return new Response<>();
     }
 }
