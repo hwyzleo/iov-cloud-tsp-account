@@ -2,8 +2,8 @@ package net.hwyz.iov.cloud.tsp.account.api.feign.service;
 
 
 import jakarta.validation.Valid;
+import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
 import net.hwyz.iov.cloud.framework.common.constant.ServiceNameConstants;
-import net.hwyz.iov.cloud.tsp.account.api.contract.UserIdentity;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.AuthenticationRequest;
 import net.hwyz.iov.cloud.tsp.account.api.feign.service.factory.ExTokenServiceFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -25,6 +25,6 @@ public interface ExTokenService {
      * @return 用户身份
      */
     @PostMapping(value = "/authenticateMp")
-    UserIdentity authenticateMp(@RequestBody @Valid AuthenticationRequest authenticationRequest);
+    ClientAccount authenticateMp(@RequestBody @Valid AuthenticationRequest authenticationRequest);
 
 }

@@ -3,7 +3,7 @@ package net.hwyz.iov.cloud.tsp.account.service.facade.service;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.hwyz.iov.cloud.tsp.account.api.contract.UserIdentity;
+import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.AuthenticationRequest;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.TokenAppService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +25,7 @@ public class TokenServiceController {
     private final TokenAppService tokenAppService;
 
     @PostMapping(value = "/authenticateMp")
-    public UserIdentity authenticateMp(@RequestBody @Valid AuthenticationRequest authenticationRequest) {
+    public ClientAccount authenticateMp(@RequestBody @Valid AuthenticationRequest authenticationRequest) {
         logger.info("手机端[{}]令牌[{}]身份认证", authenticationRequest.getClientId(), authenticationRequest.getToken());
         return tokenAppService.authenticateMp(authenticationRequest.getToken(), authenticationRequest.getClientId());
     }

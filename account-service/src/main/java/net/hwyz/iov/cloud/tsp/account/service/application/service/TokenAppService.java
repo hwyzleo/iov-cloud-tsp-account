@@ -1,9 +1,9 @@
 package net.hwyz.iov.cloud.tsp.account.service.application.service;
 
 import lombok.RequiredArgsConstructor;
+import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
 import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.framework.common.util.ParamHelper;
-import net.hwyz.iov.cloud.tsp.account.api.contract.UserIdentity;
 import net.hwyz.iov.cloud.tsp.account.service.domain.token.service.TokenService;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.dao.TokenDao;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.TokenPo;
@@ -58,11 +58,9 @@ public class TokenAppService {
      * @param clientId 客户端ID
      * @return 用户身份
      */
-    public UserIdentity authenticateMp(String token, String clientId) {
+    public ClientAccount authenticateMp(String token, String clientId) {
         return tokenService.validateToken(token, ClientType.MP, clientId)
-                .map(tokenDo -> UserIdentity.builder()
-                        .accountId(tokenDo.getAccountId())
-                        .build())
+                .map(tokenDo -> new ClientAccount(tokenDo.getClientId(), tokenDo.getAccountId()))
                 .orElseThrow(null);
     }
 

@@ -1,7 +1,7 @@
 package net.hwyz.iov.cloud.tsp.account.api.feign.service.factory;
 
 import lombok.extern.slf4j.Slf4j;
-import net.hwyz.iov.cloud.tsp.account.api.contract.UserIdentity;
+import net.hwyz.iov.cloud.framework.common.bean.ClientAccount;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.AuthenticationRequest;
 import net.hwyz.iov.cloud.tsp.account.api.feign.service.ExTokenService;
 import org.springframework.cloud.openfeign.FallbackFactory;
@@ -20,7 +20,7 @@ public class ExTokenServiceFallbackFactory implements FallbackFactory<ExTokenSer
     public ExTokenService create(Throwable throwable) {
         return new ExTokenService() {
             @Override
-            public UserIdentity authenticateMp(AuthenticationRequest authenticationRequest) {
+            public ClientAccount authenticateMp(AuthenticationRequest authenticationRequest) {
                 logger.error("令牌服务手机令牌身份认证调用失败", throwable);
                 return null;
             }
