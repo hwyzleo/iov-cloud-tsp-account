@@ -64,7 +64,7 @@ public class AccountMpController implements AccountMpApi {
 
     @Override
     @PostMapping("/action/modifyNickname")
-    public Response<Void> modifyNickname(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> nickname) {
+    public Response<Void> modifyNickname(@RequestHeader ClientAccount clientAccount, @RequestBody Map<String, String> nickname) {
         logger.info("手机客户端[{}]修改账号[{}]昵称", clientAccount.getClientId(), clientAccount.getAccountId());
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), nickname);
         return new Response<>();
@@ -72,7 +72,7 @@ public class AccountMpController implements AccountMpApi {
 
     @Override
     @PostMapping("/action/modifyBio")
-    public Response<Void> modifyBio(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> bio) {
+    public Response<Void> modifyBio(@RequestHeader ClientAccount clientAccount, @RequestBody Map<String, String> bio) {
         logger.info("手机客户端[{}]修改账号[{}]签名简介", clientAccount.getClientId(), clientAccount.getAccountId());
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), bio);
         return new Response<>();
@@ -80,7 +80,7 @@ public class AccountMpController implements AccountMpApi {
 
     @Override
     @PostMapping("/action/modifyGender")
-    public Response<Void> modifyGender(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> gender) {
+    public Response<Void> modifyGender(@RequestHeader ClientAccount clientAccount, @RequestBody Map<String, String> gender) {
         logger.info("手机客户端[{}]修改账号[{}]性别", clientAccount.getClientId(), clientAccount.getAccountId());
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), gender);
         return new Response<>();
@@ -88,7 +88,7 @@ public class AccountMpController implements AccountMpApi {
 
     @Override
     @PostMapping("/action/modifyBirthday")
-    public Response<Void> modifyBirthday(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> birthday) {
+    public Response<Void> modifyBirthday(@RequestHeader ClientAccount clientAccount, @RequestBody Map<String, String> birthday) {
         logger.info("手机客户端[{}]修改账号[{}]生日", clientAccount.getClientId(), clientAccount.getAccountId());
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), birthday);
         return new Response<>();
@@ -96,7 +96,7 @@ public class AccountMpController implements AccountMpApi {
 
     @Override
     @PostMapping("/action/modifyCity")
-    public Response<Void> modifyCity(@RequestHeader ClientAccount clientAccount, @RequestParam Map<String, String> city) {
+    public Response<Void> modifyCity(@RequestHeader ClientAccount clientAccount, @RequestBody Map<String, String> city) {
         logger.info("手机客户端[{}]修改账号[{}]用车城市", clientAccount.getClientId(), clientAccount.getAccountId());
         accountAppService.modifyMpAccountInfo(clientAccount.getAccountId(), city);
         return new Response<>();
