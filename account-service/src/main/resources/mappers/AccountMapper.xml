@@ -19,26 +19,29 @@
         <result column="mobile" property="mobile" />
         <result column="email" property="email" />
         <result column="nickname" property="nickname" />
+        <result column="bio" property="bio" />
         <result column="avatar" property="avatar" />
         <result column="gender" property="gender" />
+        <result column="birthday" property="birthday" />
+        <result column="city" property="city" />
         <result column="reg_source" property="regSource" />
         <result column="enable" property="enable" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="baseColumnList">
-        id, account_id, username, password, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
+        id, account_id, username, password, country_region_code, mobile, email, nickname, bio, avatar, gender, birthday, city, reg_source, enable,
         description, create_time, create_by, modify_time, modify_by, row_version, row_valid
     </sql>
 
     <!-- 插入 -->
     <insert id="insertPo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_account (
-            id, account_id, username, password, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
+            id, account_id, username, password, country_region_code, mobile, email, nickname, bio, avatar, gender, birthday, city, reg_source, enable,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES (
-            #{id}, #{accountId}, #{username}, #{password}, #{countryRegionCode}, #{mobile}, #{email}, #{nickname}, #{avatar}, #{gender}, #{regSource}, #{enable},
+            #{id}, #{accountId}, #{username}, #{password}, #{countryRegionCode}, #{mobile}, #{email}, #{nickname}, #{bio}, #{avatar}, #{gender}, #{birthday}, #{city}, #{regSource}, #{enable},
             #{description}, now(), #{createBy}, now(), #{modifyBy}, 1, 1
         )
     </insert>
@@ -46,13 +49,13 @@
     <!-- 批量插入 -->
     <insert id="batchInsertPo" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
         INSERT INTO tb_account (
-            id, account_id, username, password, country_region_code, mobile, email, nickname, avatar, gender, reg_source, enable,
+            id, account_id, username, password, country_region_code, mobile, email, nickname, bio, avatar, gender, birthday, city, reg_source, enable,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
         (
-            #{item.id}, #{item.accountId}, #{item.username}, #{item.password}, #{item.countryRegionCode}, #{item.mobile}, #{item.email}, #{item.nickname}, #{item.avatar}, #{item.gender}, #{item.regSource}, #{item.enable},
+            #{item.id}, #{item.accountId}, #{item.username}, #{item.password}, #{item.countryRegionCode}, #{item.mobile}, #{item.email}, #{item.nickname}, #{item.bio}, #{item.avatar}, #{item.gender}, #{item.birthday}, #{item.city}, #{item.regSource}, #{item.enable},
             #{item.description}, now(), #{item.createBy}, now(), #{item.modifyBy}, 1, 1
         )
         </foreach>
@@ -82,11 +85,20 @@
         <if test="nickname != null and nickname != ''">
             t.nickname = #{nickname},
         </if>
+        <if test="bio != null and bio != ''">
+            t.bio = #{bio},
+        </if>
         <if test="avatar != null and avatar != ''">
             t.avatar = #{avatar},
         </if>
         <if test="gender != null and gender != ''">
             t.gender = #{gender},
+        </if>
+        <if test="birthday != null and birthday != ''">
+            t.birthday = #{birthday},
+        </if>
+        <if test="city != null and city != ''">
+            t.city = #{city},
         </if>
         <if test="regSource != null and regSource != ''">
             t.reg_source = #{regSource},
@@ -157,11 +169,20 @@
         <if test="nickname != null and nickname != ''">
             AND t.nickname = #{nickname}
         </if>
+        <if test="bio != null and bio != ''">
+            AND t.bio = #{bio}
+        </if>
         <if test="avatar != null and avatar != ''">
             AND t.avatar = #{avatar}
         </if>
         <if test="gender != null and gender != ''">
             AND t.gender = #{gender}
+        </if>
+        <if test="birthday != null and birthday != ''">
+            AND t.birthday = #{birthday}
+        </if>
+        <if test="city != null and city != ''">
+            AND t.city = #{city}
         </if>
         <if test="regSource != null and regSource != ''">
             AND t.reg_source = #{regSource}
@@ -215,6 +236,15 @@
             and date_format(t.create_time,'%Y%m%d') &lt;= date_format(#{endTime},'%Y%m%d')
         </if>
         ORDER BY t.id DESC
+    </select>
+
+    <!-- 根据账号ID查询 -->
+    <select id="selectPoByAccountId" parameterType="string" resultMap="baseResultMap">
+        SELECT <include refid="baseColumnList"/>
+        FROM tb_account t
+        WHERE t.row_valid = 1
+        AND t.account_id = #{accountId}
+        LIMIT 1
     </select>
 
     <!-- 根据Map对象统计记录数 -->

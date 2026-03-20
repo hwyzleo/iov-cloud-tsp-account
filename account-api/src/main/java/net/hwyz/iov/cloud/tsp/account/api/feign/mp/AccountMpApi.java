@@ -56,6 +56,15 @@ public interface AccountMpApi {
     Response<Void> modifyNickname(ClientAccount clientAccount, String nickname);
 
     /**
+     * 修改签名简介
+     *
+     * @param clientAccount 终端用户
+     * @param bio           签名简介
+     * @return 操作结果
+     */
+    Response<Void> modifyBio(ClientAccount clientAccount, String bio);
+
+    /**
      * 修改性别
      *
      * @param clientAccount 终端用户
@@ -63,5 +72,23 @@ public interface AccountMpApi {
      * @return 操作结果
      */
     Response<Void> modifyGender(ClientAccount clientAccount, String gender);
+
+    /**
+     * 修改生日
+     *
+     * @param clientAccount 终端用户
+     * @param birthday      生日
+     * @return 操作结果
+     */
+    Response<Void> modifyBirthday(ClientAccount clientAccount, String birthday);
+
+    /**
+     * 修改用车城市
+     *
+     * @param clientAccount 终端用户
+     * @param city          用车城市
+     * @return 操作结果
+     */
+    Response<Void> modifyCity(ClientAccount clientAccount, String city);
 
 }

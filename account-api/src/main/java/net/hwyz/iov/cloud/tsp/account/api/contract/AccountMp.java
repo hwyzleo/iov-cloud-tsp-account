@@ -23,6 +23,10 @@ public class AccountMp extends Account {
      */
     private String nickname;
     /**
+     * 签名简介
+     */
+    private String bio;
+    /**
      * 头像
      */
     private String avatar;
@@ -30,5 +34,13 @@ public class AccountMp extends Account {
      * 性别
      */
     private String gender;
+    /**
+     * 生日
+     */
+    private String birthday;
+    /**
+     * 用车城市
+     */
+    private String city;
 
 }

@@ -10,10 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WeixinMiniProgramException extends AccountBaseException {
 
-    private static final int ERROR_CODE = 201005;
-
     public WeixinMiniProgramException(String message) {
-        super(ERROR_CODE);
+        super(ERROR_CODE_WEIXIN_MINI_PROGRAM_EXCEPTION);
         logger.warn("微信小程序异常[{}]", message);
     }
 }

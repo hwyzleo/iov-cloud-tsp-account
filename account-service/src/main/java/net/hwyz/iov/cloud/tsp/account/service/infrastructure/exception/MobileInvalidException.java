@@ -12,10 +12,8 @@ import net.hwyz.iov.cloud.framework.common.enums.CountryRegion;
 @Slf4j
 public class MobileInvalidException extends AccountBaseException {
 
-    private static final int ERROR_CODE = 201002;
-
     public MobileInvalidException(String mobile, CountryRegion countryRegion) {
-        super(ERROR_CODE);
+        super(ERROR_CODE_MOBILE_INVALID);
         logger.warn("手机号码[{}]无效[{}]", mobile, countryRegion.name);
     }
 }

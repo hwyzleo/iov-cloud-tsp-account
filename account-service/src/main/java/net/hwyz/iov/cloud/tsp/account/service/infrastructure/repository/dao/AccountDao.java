@@ -15,4 +15,12 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AccountDao extends BaseDao<AccountPo, Long> {
 
+    /**
+     * 根据账号ID查询
+     *
+     * @param accountId 账号ID
+     * @return 账号数据
+     */
+    AccountPo selectPoByAccountId(String accountId);
+
 }

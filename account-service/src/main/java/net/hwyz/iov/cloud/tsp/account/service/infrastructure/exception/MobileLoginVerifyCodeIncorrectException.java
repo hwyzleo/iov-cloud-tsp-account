@@ -12,10 +12,8 @@ import net.hwyz.iov.cloud.framework.common.enums.CountryRegion;
 @Slf4j
 public class MobileLoginVerifyCodeIncorrectException extends AccountBaseException {
 
-    private static final int ERROR_CODE = 201001;
-
     public MobileLoginVerifyCodeIncorrectException(CountryRegion countryRegion, String mobile) {
-        super(ERROR_CODE);
+        super(ERROR_CODE_MOBILE_LOGIN_VERIFY_CODE_INCORRECT);
         logger.warn("手机[{}:{}]登录验证码验证失败", countryRegion.code, mobile);
     }
 }

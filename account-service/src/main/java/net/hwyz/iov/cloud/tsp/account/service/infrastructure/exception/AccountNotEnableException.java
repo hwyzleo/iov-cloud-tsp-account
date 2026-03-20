@@ -10,10 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AccountNotEnableException extends AccountBaseException {
 
-    private static final int ERROR_CODE = 201006;
-
     public AccountNotEnableException(String accountId) {
-        super(ERROR_CODE);
+        super(ERROR_CODE_ACCOUNT_NOT_ENABLE);
         logger.warn("账号[{}]已被禁用", accountId);
     }
 }

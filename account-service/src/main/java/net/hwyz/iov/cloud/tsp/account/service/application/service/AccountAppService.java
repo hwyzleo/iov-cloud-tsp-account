@@ -97,8 +97,17 @@ public class AccountAppService {
         if (infoMap.containsKey("nickname")) {
             accountDo.modifyNickname(infoMap.get("nickname"));
         }
+        if (infoMap.containsKey("bio")) {
+            accountDo.modifyBio(infoMap.get("bio"));
+        }
         if (infoMap.containsKey("gender")) {
             accountDo.modifyGender(Gender.valueOf(infoMap.get("gender")));
+        }
+        if (infoMap.containsKey("birthday")) {
+            accountDo.modifyBirthday(infoMap.get("birthday"));
+        }
+        if (infoMap.containsKey("city")) {
+            accountDo.modifyCity(infoMap.get("city"));
         }
         accountRepository.save(accountDo);
     }

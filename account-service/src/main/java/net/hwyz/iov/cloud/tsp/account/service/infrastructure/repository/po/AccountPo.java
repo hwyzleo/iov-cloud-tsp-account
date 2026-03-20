@@ -78,6 +78,12 @@ public class AccountPo extends BasePo {
     private String nickname;
 
     /**
+     * 签名简介
+     */
+    @TableField("bio")
+    private String bio;
+
+    /**
      * 头像
      */
     @TableField("avatar")
@@ -88,6 +94,18 @@ public class AccountPo extends BasePo {
      */
     @TableField("gender")
     private String gender;
+
+    /**
+     * 生日
+     */
+    @TableField("birthday")
+    private String birthday;
+
+    /**
+     * 用车城市
+     */
+    @TableField("city")
+    private String city;
 
     /**
      * 注册来源

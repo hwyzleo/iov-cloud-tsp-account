@@ -10,10 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MobileLoginSendLockException extends AccountBaseException {
 
-    private static final int ERROR_CODE = 201003;
-
     public MobileLoginSendLockException(String mobile) {
-        super(ERROR_CODE);
+        super(ERROR_CODE_MOBILE_LOGIN_SEND_LOCK);
         logger.warn("手机[{}]发送登录验证码已锁定", mobile);
     }
 }

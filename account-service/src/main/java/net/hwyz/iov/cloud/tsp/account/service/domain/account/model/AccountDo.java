@@ -35,6 +35,10 @@ public class AccountDo extends BaseDo<Long> {
      */
     private String nickname;
     /**
+     * 签名简介
+     */
+    private String bio;
+    /**
      * 头像
      */
     private String avatar;
@@ -42,6 +46,14 @@ public class AccountDo extends BaseDo<Long> {
      * 性别
      */
     private Gender gender;
+    /**
+     * 生日
+     */
+    private String birthday;
+    /**
+     * 用车城市
+     */
+    private String city;
     /**
      * 注册来源
      */
@@ -76,16 +88,57 @@ public class AccountDo extends BaseDo<Long> {
         stateChange();
     }
 
+    /**
+     * 修改昵称
+     * @param nickname 昵称
+     */
     public void modifyNickname(String nickname) {
-        if (!this.nickname.equals(nickname)) {
+        if (this.nickname == null || !this.nickname.equals(nickname)) {
             this.nickname = nickname;
             stateChange();
         }
     }
 
+    /**
+     * 修改签名简介
+     * @param bio 签名简介
+     */
+    public void modifyBio(String bio) {
+        if (this.bio == null || !this.bio.equals(bio)) {
+            this.bio = bio;
+            stateChange();
+        }
+    }
+
+    /**
+     * 修改性别
+     * @param gender 性别
+     */
     public void modifyGender(Gender gender) {
-        if (!this.gender.equals(gender)) {
+        if (this.gender == null || !this.gender.equals(gender)) {
             this.gender = gender;
+            stateChange();
+        }
+    }
+
+    /**
+     * 修改生日
+     * @param birthday 生日
+     */
+    public void modifyBirthday(String birthday) {
+        if (this.birthday == null || !this.birthday.equals(birthday)) {
+            this.birthday = birthday;
+            stateChange();
+        }
+    }
+
+    /**
+     * 修改用车城市
+     * @param city 用车城市
+     */
+    public void modifyCity(String city) {
+        if (this.city == null || !this.city.equals(city)) {
+            this.city = city;
             stateChange();
         }
     }
