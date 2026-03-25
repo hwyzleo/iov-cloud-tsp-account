@@ -3,6 +3,7 @@ package net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.assembl
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
 import net.hwyz.iov.cloud.tsp.account.service.infrastructure.repository.po.ClientPo;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
@@ -22,7 +23,9 @@ public interface ClientPoAssembler {
      * @param clientDo 领域对象
      * @return 数据对象
      */
-    @Mappings({})
+    @Mappings({
+            @Mapping(target = "language", source = "language.code"),
+    })
     ClientPo fromDo(ClientDo clientDo);
 
     /**
@@ -31,7 +34,9 @@ public interface ClientPoAssembler {
      * @param clientPo 数据对象
      * @return 领域对象
      */
-    @Mappings({})
+    @Mappings({
+            @Mapping(target = "language", expression = "java(net.hwyz.iov.cloud.framework.common.enums.ClientLanguage.valOf(clientPo.getLanguage()))"),
+    })
     ClientDo toDo(ClientPo clientPo);
 
 }
