@@ -108,7 +108,7 @@ public class ClientDo extends BaseDo<Long> {
      */
     public void updateLanguage(String language) {
         if (ClientLanguage.valOf(language) != this.language) {
-            this.language = ClientLanguage.valueOf(language);
+            this.language = ClientLanguage.valOf(language);
             stateChange();
         }
     }
