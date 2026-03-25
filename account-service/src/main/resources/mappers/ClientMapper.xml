@@ -21,23 +21,24 @@
         <result column="os_version" property="osVersion" />
         <result column="app_version" property="appVersion" />
         <result column="ip" property="ip" />
+        <result column="language" property="language" />
         <result column="login_time" property="loginTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="baseColumnList">
-        id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, login_time,
+        id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, language, login_time,
         description, create_time, create_by, modify_time, modify_by, row_version, row_valid
     </sql>
 
     <!-- 插入 -->
     <insert id="insertPo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_client (
-            id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, login_time,
+            id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, language, login_time,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES (
-            #{id}, #{accountId}, #{clientId}, #{pushRegId}, #{clientType}, #{oem}, #{os}, #{osVersion}, #{appVersion}, #{ip}, #{loginTime},
+            #{id}, #{accountId}, #{clientId}, #{pushRegId}, #{clientType}, #{oem}, #{os}, #{osVersion}, #{appVersion}, #{ip}, #{language}, #{loginTime},
             #{description}, now(), #{createBy}, now(), #{modifyBy}, 1, 1
         )
     </insert>
@@ -45,13 +46,13 @@
     <!-- 批量插入 -->
     <insert id="batchInsertPo" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
         INSERT INTO tb_client (
-            id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, login_time,
+            id, account_id, client_id, push_reg_id, client_type, oem, os, os_version, app_version, ip, language, login_time,
             description, create_time, create_by, modify_time, modify_by, row_version, row_valid
         )
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
         (
-            #{item.id}, #{item.accountId}, #{item.clientId}, #{item.pushRegId}, #{item.clientType}, #{item.oem}, #{item.os}, #{item.osVersion}, #{item.appVersion}, #{item.ip}, #{item.loginTime},
+            #{item.id}, #{item.accountId}, #{item.clientId}, #{item.pushRegId}, #{item.clientType}, #{item.oem}, #{item.os}, #{item.osVersion}, #{item.appVersion}, #{item.ip}, #{item.language}, #{item.loginTime},
             #{item.description}, now(), #{item.createBy}, now(), #{item.modifyBy}, 1, 1
         )
         </foreach>
@@ -86,6 +87,9 @@
         </if>
         <if test="ip != null and ip != ''">
             t.ip = #{ip},
+        </if>
+        <if test="language != null and language != ''">
+            t.language = #{language},
         </if>
         <if test="loginTime != null">
             t.login_time = #{loginTime},
@@ -158,6 +162,9 @@
         </if>
         <if test="ip != null and ip != ''">
             AND t.ip = #{ip}
+        </if>
+        <if test="language != null and language != ''">
+            AND t.language = #{language}
         </if>
         <if test="loginTime != null">
             AND t.login_time = #{loginTime}
@@ -249,6 +256,9 @@
         </if>
         <if test="ip != null and ip != ''">
             AND t.ip = #{ip}
+        </if>
+        <if test="language != null and language != ''">
+            AND t.language = #{language}
         </if>
         <if test="loginTime != null">
             AND t.login_time = #{loginTime}

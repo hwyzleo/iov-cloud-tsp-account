@@ -3,6 +3,7 @@ package net.hwyz.iov.cloud.tsp.account.service.application.service;
 import lombok.RequiredArgsConstructor;
 import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.UpdateClientConfigRequest;
+import net.hwyz.iov.cloud.tsp.account.api.contract.request.UpdateClientLanguageRequest;
 import net.hwyz.iov.cloud.tsp.account.api.contract.response.ClientResponse;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.model.ClientDo;
 import net.hwyz.iov.cloud.tsp.account.service.domain.client.repository.ClientRepository;
@@ -72,6 +73,18 @@ public class ClientAppService {
         ClientDo clientDo = clientService.getOrCreate(clientId, ClientType.MP);
         clientDo.updatePushRegId(request.getPushRegId());
         clientDo.updateOs(request.getOs());
+        clientRepository.save(clientDo);
+    }
+
+    /**
+     * 更新手机客户端语言
+     *
+     * @param clientId 客户端ID
+     * @param request  更新客户端配置请求
+     */
+    public void updateMpLanguage(String clientId, UpdateClientLanguageRequest request) {
+        ClientDo clientDo = clientService.getOrCreate(clientId, ClientType.MP);
+        clientDo.updateLanguage(request.getLanguage());
         clientRepository.save(clientDo);
     }
 

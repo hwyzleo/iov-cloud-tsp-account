@@ -92,6 +92,12 @@ public class ClientPo extends BasePo {
     private String ip;
 
     /**
+     * 客户端语言
+     */
+    @TableField("language")
+    private String language;
+
+    /**
      * 最后登录时间
      */
     @TableField("login_time")

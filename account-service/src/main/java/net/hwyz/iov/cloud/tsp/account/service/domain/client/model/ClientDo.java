@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import net.hwyz.iov.cloud.framework.common.domain.BaseDo;
+import net.hwyz.iov.cloud.framework.common.enums.ClientLanguage;
 import net.hwyz.iov.cloud.framework.common.enums.ClientType;
 import net.hwyz.iov.cloud.framework.common.enums.Os;
 import net.hwyz.iov.cloud.tsp.account.service.domain.contract.enums.ClientOperation;
@@ -39,6 +40,10 @@ public class ClientDo extends BaseDo<Long> {
      * 操作系统
      */
     private Os os;
+    /**
+     * 客户端语言
+     */
+    private ClientLanguage language;
     /**
      * 最后登录时间
      */
@@ -92,6 +97,18 @@ public class ClientDo extends BaseDo<Long> {
     public void updateOs(String os) {
         if (StrUtil.isNotBlank(os) && Os.valueOf(os) != this.os) {
             this.os = Os.valueOf(os);
+            stateChange();
+        }
+    }
+
+    /**
+     * 更新客户端语言
+     *
+     * @param language 客户端语言
+     */
+    public void updateLanguage(String language) {
+        if (ClientLanguage.valueOf(language) != this.language) {
+            this.language = ClientLanguage.valueOf(language);
             stateChange();
         }
     }

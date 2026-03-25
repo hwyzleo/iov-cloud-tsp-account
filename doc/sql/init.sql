@@ -66,6 +66,7 @@ CREATE TABLE `db_account`.`tb_client`
     `os_version`  VARCHAR(255)          DEFAULT NULL COMMENT '操作系统版本',
     `app_version` VARCHAR(100)          DEFAULT NULL COMMENT '应用版本',
     `ip`          VARCHAR(100)          DEFAULT NULL COMMENT 'IP地址',
+    `language`    VARCHAR(20)           DEFAULT NULL COMMENT '客户端语言',
     `login_time`  TIMESTAMP             DEFAULT NULL COMMENT '最后登录时间',
     `description` VARCHAR(255)          DEFAULT NULL COMMENT '备注',
     `create_time` TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

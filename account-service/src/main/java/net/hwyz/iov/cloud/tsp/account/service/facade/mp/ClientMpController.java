@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.hwyz.iov.cloud.framework.common.bean.Response;
 import net.hwyz.iov.cloud.tsp.account.api.contract.request.UpdateClientConfigRequest;
+import net.hwyz.iov.cloud.tsp.account.api.contract.request.UpdateClientLanguageRequest;
 import net.hwyz.iov.cloud.tsp.account.api.feign.mp.ClientMpApi;
 import net.hwyz.iov.cloud.tsp.account.service.application.service.ClientAppService;
 import org.springframework.web.bind.annotation.*;
@@ -37,4 +38,18 @@ public class ClientMpController implements ClientMpApi {
         return new Response<>();
     }
 
+    /**
+     * 更新客户端语言
+     *
+     * @param clientId 客户端ID
+     * @param request  更新客户端语言请求
+     * @return 请求结果
+     */
+    @Override
+    @PostMapping("/action/updateLanguage")
+    public Response<Void> updateClientLanguage(@RequestHeader String clientId, @RequestBody @Valid UpdateClientLanguageRequest request) {
+        logger.info("手机客户端[{}]更新客户端语言", clientId);
+        clientAppService.updateMpLanguage(clientId, request);
+        return new Response<>();
+    }
 }
